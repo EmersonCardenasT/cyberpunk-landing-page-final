@@ -1,0 +1,71 @@
+<!-- Scroll to top button -->
+<button
+  id="scrollTopBtn"
+  onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+  class="fixed bottom-20 right-4 md:bottom-24 md:right-6
+         w-12 h-12 md:w-14 md:h-14
+         bg-blue-400 hover:bg-blue-600
+         rounded-full shadow-2xl
+         flex items-center justify-center
+         transition-all hover:scale-110 group z-50 hidden"
+>
+  <span
+    class="material-icons-round text-white text-xl md:text-2xl
+               group-hover:-translate-y-1 transition-transform"
+  >
+    keyboard_arrow_up
+  </span>
+</button>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const scrollBtn = document.getElementById("scrollTopBtn");
+
+    if (!scrollBtn) return;
+
+    window.addEventListener("scroll", () => {
+      scrollBtn.classList.toggle("hidden", window.scrollY <= 300);
+    });
+  });
+
+  
+</script>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .whatsapp-pulse {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+</style>
+
+<a
+  href="https://wa.me/51927854195?text=Hola%20%C2%A1Quiero%20m%C3%A1s%20informaci%C3%B3n!"
+  target="_blank"
+  rel="noopener"
+  aria-label="WhatsApp"
+  class="fixed bottom-4 right-4 md:bottom-6 md:right-6
+         w-12 h-12 md:w-14 md:h-14
+         bg-green-500 hover:bg-green-600
+         text-white
+         rounded-full
+         flex items-center justify-center
+         shadow-lg hover:shadow-green-500/50
+         transition-all duration-300
+         hover:scale-110 z-50 group"
+>
+  <i class="fa-brands fa-whatsapp text-xl md:text-2xl"></i>
+
+  <!-- Glow effect -->
+  <span class="absolute inset-0 rounded-full bg-green-500 opacity-20 blur-xl group-hover:opacity-40 transition"></span>
+</a>

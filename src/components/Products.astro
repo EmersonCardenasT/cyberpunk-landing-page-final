@@ -1,0 +1,743 @@
+---
+// ── Importación de imágenes (optimización automática con Astro)
+import iphone15ProMax from "../assets/img/iphone_15_pro_max.webp";
+import iphone15Pro from "../assets/img/iphone_15_pro.webp";
+import iphone15 from "../assets/img/iphone_15.webp";
+import iphone14Pro from "../assets/img/iphone_14_pro.webp";
+
+import samsungS25Ultra from "../assets/img/samsung_s25_ultra.webp";
+import samsungS25Plus from "../assets/img/samsung_s25_plus.webp";
+import samsungS25 from "../assets/img/samsung_s25.jpg";
+import samsungZFold6 from "../assets/img/samsung_zfold_6.jpg";
+
+import xiaomi15Ultra from "../assets/img/xiaomi_15_ultra.webp";
+import xiaomi15Pro from "../assets/img/xiaomi_15_pro.webp";
+import xiaomi15 from "../assets/img/xiaomi_15.jpg";
+import redmiNote15Pro from "../assets/img/redmi_note_15_pro.jpg";
+
+// Número de WhatsApp
+const WHATSAPP = "51927854195";
+
+// ── Definición de marcas y productos
+// Se usa `src` (el objeto de imagen importado) en lugar del string de ruta.
+// Astro resuelve y optimiza cada imagen en build time.
+const BRANDS = [
+  {
+    id: "iphone",
+    label: "Innovación iPhone",
+    title: ["Línea", "IPHONE", "2025"],
+    description:
+      "La mejor experiencia Apple con tecnología de vanguardia y diseño icónico.",
+    products: [
+      {
+        name: "iPhone 15 Pro Max",
+        image: iphone15ProMax,
+        originalPrice: "S/ 6,500",
+        price: "S/ 4,875",
+        savings: "S/ 1,625",
+        discount: "-25%",
+        discountColor: "bg-blue-500 animate-pulse",
+        specs: [
+          ["Pantalla", "6.7\" Super Retina XDR OLED, 120Hz ProMotion"],
+          ["Chip", "A17 Pro (3 nm)"],
+          ["RAM / Storage", "8 GB / 256 GB – 1 TB"],
+          ["Cámara trasera", "48 MP + 12 MP + 12 MP · Zoom óptico 5×"],
+          ["Cámara frontal", "12 MP TrueDepth con autofocus"],
+          ["Batería", "4422 mAh · MagSafe 27 W"],
+          ["Sistema operativo", "iOS 17"],
+          ["Conectividad", "5G · Wi-Fi 6E · Bluetooth 5.3 · USB-C 3.2"],
+          ["Chasis", "Titanio grado 5"],
+          ["Resistencia", "IP68 — 6 m / 30 min"],
+        ],
+      },
+      {
+        name: "iPhone 15 Pro",
+        image: iphone15Pro,
+        originalPrice: "S/ 5,400",
+        price: "S/ 4,212",
+        savings: "S/ 1,188",
+        discount: "-22%",
+        discountColor: "bg-green-500",
+        specs: [
+          ["Pantalla", "6.1\" Super Retina XDR OLED, 120Hz ProMotion"],
+          ["Chip", "A17 Pro (3 nm)"],
+          ["RAM / Storage", "8 GB / 128 GB – 1 TB"],
+          ["Cámara trasera", "48 MP + 12 MP + 12 MP · Zoom óptico 3×"],
+          ["Cámara frontal", "12 MP TrueDepth con autofocus"],
+          ["Batería", "3274 mAh · MagSafe 27 W"],
+          ["Sistema operativo", "iOS 17"],
+          ["Conectividad", "5G · Wi-Fi 6E · USB-C 3.2"],
+          ["Chasis", "Titanio grado 5"],
+          ["Resistencia", "IP68"],
+        ],
+      },
+      {
+        name: "iPhone 15",
+        image: iphone15,
+        originalPrice: "S/ 4,200",
+        price: "S/ 3,360",
+        savings: "S/ 840",
+        discount: "-20%",
+        discountColor: "bg-blue-500",
+        specs: [
+          ["Pantalla", "6.1\" Super Retina XDR OLED, 60 Hz"],
+          ["Chip", "A16 Bionic"],
+          ["RAM / Storage", "6 GB / 128 GB – 512 GB"],
+          ["Cámara trasera", "48 MP + 12 MP Gran angular"],
+          ["Cámara frontal", "12 MP TrueDepth"],
+          ["Batería", "3349 mAh · MagSafe 20 W"],
+          ["Sistema operativo", "iOS 17"],
+          ["Conectividad", "5G · Wi-Fi 6 · USB-C"],
+          ["Resistencia", "IP68"],
+        ],
+      },
+      {
+        name: "iPhone 14 Pro",
+        image: iphone14Pro,
+        originalPrice: "S/ 3,800",
+        price: "S/ 3,116",
+        savings: "S/ 684",
+        discount: "-18%",
+        discountColor: "bg-blue-500",
+        fade: true,
+        specs: [
+          ["Pantalla", "6.1\" Super Retina XDR OLED, 120Hz ProMotion"],
+          ["Chip", "A16 Bionic"],
+          ["RAM / Storage", "6 GB / 128 GB – 1 TB"],
+          ["Cámara trasera", "48 MP + 12 MP + 12 MP · Zoom óptico 3×"],
+          ["Cámara frontal", "12 MP TrueDepth · Autofocus"],
+          ["Batería", "3200 mAh · MagSafe 27 W"],
+          ["Sistema operativo", "iOS 17"],
+          ["Resistencia", "IP68"],
+        ],
+      },
+    ],
+  },
+  {
+    id: "samsung",
+    label: "Galaxy Experience",
+    title: ["Línea", "SAMSUNG", "2025"],
+    description:
+      "Innovación sin límites con S Pen y pantallas Dynamic AMOLED de última generación.",
+    products: [
+      {
+        name: "Samsung S25 Ultra",
+        image: samsungS25Ultra,
+        originalPrice: "S/ 6,800",
+        price: "S/ 4,896",
+        savings: "S/ 1,904",
+        discount: "-28%",
+        discountColor: "bg-green-500",
+        specs: [
+          ["Pantalla", "6.9\" Dynamic AMOLED 2X · 120 Hz"],
+          ["Procesador", "Snapdragon 8 Elite"],
+          ["RAM / Storage", "12 GB / 256 GB – 1 TB"],
+          ["Cámara trasera", "200 MP + 50 MP + 10 MP + 12 MP"],
+          ["Cámara frontal", "12 MP"],
+          ["Batería", "5000 mAh · Carga 45 W"],
+          ["Sistema operativo", "Android 15 (One UI 7)"],
+          ["S Pen", "Integrado"],
+          ["Conectividad", "5G · Wi-Fi 7 · Bluetooth 5.4 · NFC"],
+          ["Resistencia", "IP68"],
+        ],
+      },
+      {
+        name: "Samsung S25 Plus",
+        image: samsungS25Plus,
+        originalPrice: "S/ 5,400",
+        price: "S/ 4,212",
+        savings: "S/ 1,188",
+        discount: "-22%",
+        discountColor: "bg-blue-500 animate-pulse",
+        specs: [
+          ["Pantalla", "6.7\" Dynamic AMOLED 2X · 120 Hz"],
+          ["Procesador", "Snapdragon 8 Elite"],
+          ["RAM / Storage", "12 GB / 256 GB – 512 GB"],
+          ["Cámara trasera", "50 MP + 10 MP + 12 MP Gran angular"],
+          ["Cámara frontal", "12 MP"],
+          ["Batería", "4900 mAh · Carga 45 W"],
+          ["Sistema operativo", "Android 15 (One UI 7)"],
+          ["Conectividad", "5G · Wi-Fi 7 · Bluetooth 5.4"],
+        ],
+      },
+      {
+        name: "Samsung S25",
+        image: samsungS25,
+        originalPrice: "S/ 4,200",
+        price: "S/ 3,360",
+        savings: "S/ 840",
+        discount: "-20%",
+        discountColor: "bg-green-500",
+        specs: [
+          ["Pantalla", "6.2\" Dynamic AMOLED 2X · 120 Hz"],
+          ["Procesador", "Snapdragon 8 Elite"],
+          ["RAM / Storage", "12 GB / 128 GB – 512 GB"],
+          ["Cámara trasera", "50 MP + 10 MP + 12 MP"],
+          ["Cámara frontal", "12 MP"],
+          ["Batería", "4000 mAh · Carga 25 W"],
+          ["Sistema operativo", "Android 15 (One UI 7)"],
+          ["Conectividad", "5G · Wi-Fi 7"],
+        ],
+      },
+      {
+        name: "Samsung Z Fold 6",
+        image: samsungZFold6,
+        originalPrice: "S/ 8,400",
+        price: "S/ 6,300",
+        savings: "S/ 2,100",
+        discount: "-25%",
+        discountColor: "bg-blue-500",
+        fade: true,
+        specs: [
+          ["Pantalla principal", "7.6\" Dynamic AMOLED 2X · 120 Hz"],
+          ["Pantalla exterior", "6.3\" AMOLED · 120 Hz"],
+          ["Procesador", "Snapdragon 8 Gen 3"],
+          ["RAM / Storage", "12 GB / 256 GB – 512 GB"],
+          ["Cámara trasera", "50 MP + 10 MP + 10 MP"],
+          ["Batería", "4400 mAh · Carga 25 W"],
+          ["Sistema operativo", "Android 14 (One UI 6.1.1)"],
+          ["Conectividad", "5G · Wi-Fi 7 · Bluetooth 5.3"],
+          ["Resistencia", "IPX8"],
+        ],
+      },
+    ],
+  },
+  {
+    id: "xiaomi",
+    label: "Innovación Xiaomi",
+    title: ["Línea", "XIAOMI", "2025"],
+    description:
+      "Tecnología de vanguardia a precios increíbles. La mejor relación calidad-precio.",
+    products: [
+      {
+        name: "Xiaomi 15 Ultra",
+        image: xiaomi15Ultra,
+        originalPrice: "S/ 5,500",
+        price: "S/ 3,850",
+        savings: "S/ 1,650",
+        discount: "-30%",
+        discountColor: "bg-blue-500 animate-pulse",
+        specs: [
+          ["Pantalla", "6.73\" LTPO AMOLED · 1-120 Hz"],
+          ["Procesador", "Snapdragon 8 Elite"],
+          ["RAM / Storage", "16 GB / 256 GB – 512 GB"],
+          ["Cámara trasera", "50 MP Leica + 200 MP Tele + 50 MP"],
+          ["Cámara frontal", "32 MP"],
+          ["Batería", "5500 mAh · Carga 90 W inalámbrica"],
+          ["Sistema operativo", "HyperOS 2 (Android 15)"],
+          ["Conectividad", "5G · Wi-Fi 7 · Bluetooth 5.4"],
+        ],
+      },
+      {
+        name: "Xiaomi 15 Pro",
+        image: xiaomi15Pro,
+        originalPrice: "S/ 4,200",
+        price: "S/ 3,024",
+        savings: "S/ 1,176",
+        discount: "-28%",
+        discountColor: "bg-green-500",
+        specs: [
+          ["Pantalla", "6.73\" LTPO AMOLED · 1-120 Hz"],
+          ["Procesador", "Snapdragon 8 Elite"],
+          ["RAM / Storage", "12 GB / 256 GB – 512 GB"],
+          ["Cámara trasera", "50 MP Leica + 50 MP + 50 MP"],
+          ["Cámara frontal", "32 MP"],
+          ["Batería", "6100 mAh · Carga 120 W"],
+          ["Sistema operativo", "HyperOS 2 (Android 15)"],
+          ["Conectividad", "5G · Wi-Fi 7"],
+        ],
+      },
+      {
+        name: "Xiaomi 15",
+        image: xiaomi15,
+        originalPrice: "S/ 3,200",
+        price: "S/ 2,176",
+        savings: "S/ 1,024",
+        discount: "-32%",
+        discountColor: "bg-blue-500",
+        specs: [
+          ["Pantalla", "6.36\" AMOLED · 120 Hz"],
+          ["Procesador", "Snapdragon 8 Elite"],
+          ["RAM / Storage", "12 GB / 256 GB – 512 GB"],
+          ["Cámara trasera", "50 MP Leica + 50 MP + 50 MP"],
+          ["Cámara frontal", "32 MP"],
+          ["Batería", "5240 mAh · Carga 90 W"],
+          ["Sistema operativo", "HyperOS 2 (Android 15)"],
+          ["Conectividad", "5G · Wi-Fi 7"],
+        ],
+      },
+      {
+        name: "Redmi Note 15 Pro",
+        image: redmiNote15Pro,
+        originalPrice: "S/ 2,000",
+        price: "S/ 1,300",
+        savings: "S/ 700",
+        discount: "-35%",
+        discountColor: "bg-orange-500",
+        fade: true,
+        specs: [
+          ["Pantalla", "6.67\" AMOLED · 120 Hz"],
+          ["Procesador", "MediaTek Dimensity 7300 Ultra"],
+          ["RAM / Storage", "8 GB / 128 GB – 256 GB"],
+          ["Cámara trasera", "200 MP + 8 MP + 2 MP"],
+          ["Cámara frontal", "20 MP"],
+          ["Batería", "5500 mAh · Carga 45 W"],
+          ["Sistema operativo", "HyperOS (Android 14)"],
+          ["Conectividad", "5G · Wi-Fi 6 · Bluetooth 5.3"],
+        ],
+      },
+    ],
+  },
+];
+---
+
+<!-- ════════════════════════════════════════════════════════
+  ESTILOS
+════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Scrollbar oculto ── */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ── Fade-in de tarjetas ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .product-card { animation: fadeUp .5s ease forwards; }
+
+  /* ── Última tarjeta con fade visual ── */
+  .card-fade::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: .75rem;
+    background: linear-gradient(to right, transparent 30%, rgba(255,255,255,.85) 100%);
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+  .dark .card-fade::after {
+    background: linear-gradient(to right, transparent 30%, rgba(15,23,42,.85) 100%);
+  }
+  .card-fade:hover::after { opacity: 0; }
+
+  /* ══ MODAL ══════════════════════════════════════════════ */
+  #modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  #modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  #modal-box {
+    background: #fff;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(.93) translateY(16px);
+    transition: transform .28s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 30px 70px rgba(0,0,0,.25);
+  }
+  .dark #modal-box { background: #0f172a; }
+  #modal-overlay.open #modal-box { transform: scale(1) translateY(0); }
+
+  #modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.08);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #64748b;
+    transition: background .15s, color .15s;
+  }
+  .dark #modal-close { background: rgba(255,255,255,.1); color: #94a3b8; }
+  #modal-close:hover { background: rgba(0,0,0,.18); color: #0f172a; }
+  .dark #modal-close:hover { background: rgba(255,255,255,.2); color: #fff; }
+
+  /* Specs table */
+  .spec-row {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(59,130,246,.08);
+    font-size: .82rem;
+  }
+  .spec-key { font-weight: 700; color: #3b82f6; min-width: 130px; flex-shrink: 0; }
+  .dark .spec-key { color: #60a5fa; }
+
+  /* WA button */
+  .btn-wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity .2s, transform .2s;
+  }
+  .btn-wa:hover { opacity: .9; transform: translateY(-2px); }
+</style>
+
+<!-- ════════════════════════════════════════════════════════
+  SECCIÓN PRINCIPAL
+════════════════════════════════════════════════════════ -->
+<section
+  id="products"
+  class="py-20 px-6 bg-gradient-to-b from-white via-slate-50 to-white
+         dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
+>
+  <!-- Título general -->
+  <div class="max-w-[1700px] mx-auto text-center mb-16">
+    <p class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3 flex items-center justify-center gap-2">
+      <span class="material-icons-round text-base">smartphone</span>
+      Catálogo Premium
+    </p>
+    <h2
+      class="text-4xl md:text-6xl font-extrabold mb-4
+             bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900
+             dark:from-white dark:via-blue-600 dark:to-white
+             bg-clip-text text-transparent"
+    >
+      NUESTROS PRODUCTOS
+    </h2>
+    <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-lg">
+      Descubre las últimas novedades en tecnología móvil con los mejores precios del mercado
+    </p>
+    <div class="flex items-center justify-center gap-2 mt-6">
+      <div class="h-px w-16 bg-gradient-to-r from-transparent to-blue-600"></div>
+      <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+      <div class="h-px w-16 bg-gradient-to-l from-transparent to-blue-600"></div>
+    </div>
+  </div>
+
+  <!-- Sliders por marca -->
+  <div id="sliders-container" class="max-w-[1700px] mx-auto">
+    {BRANDS.map((brand) => (
+      <div class="mb-20">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+          <!-- Encabezado lateral de la marca -->
+          <div class="lg:w-1/4 flex flex-col justify-center">
+            <p class="text-blue-600 font-bold tracking-[.3em] uppercase text-xs mb-4">
+              {brand.label}
+            </p>
+            <h3 class="text-5xl md:text-6xl font-black tracking-tighter
+                       text-slate-900 dark:text-white uppercase leading-[.9]">
+              {brand.title[0]}<br />{brand.title[1]}<br />
+              <span class="text-blue-600">{brand.title[2]}</span>
+            </h3>
+            <p class="mt-6 text-slate-500 dark:text-slate-400 text-sm max-w-xs italic">
+              {brand.description}
+            </p>
+            <!-- Controles del slider -->
+            <div class="flex gap-2 mt-6">
+              <button
+                data-slider={`${brand.id}-slider`}
+                data-dir="left"
+                class="slider-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800
+                       hover:bg-blue-500 hover:text-white hover:border-blue-500
+                       transition-all duration-300 hover:scale-110"
+                aria-label="Anterior"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <button
+                data-slider={`${brand.id}-slider`}
+                data-dir="right"
+                class="slider-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800
+                       hover:bg-blue-500 hover:text-white hover:border-blue-500
+                       transition-all duration-300 hover:scale-110"
+                aria-label="Siguiente"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slider de tarjetas -->
+          <div class="lg:w-3/4 overflow-visible">
+            <div
+              id={`${brand.id}-slider`}
+              class="flex gap-5 overflow-x-auto pb-12 pt-6 px-2
+                     snap-x snap-mandatory no-scrollbar
+                     cursor-grab active:cursor-grabbing scroll-smooth"
+            >
+              {brand.products.map((product, index) => (
+                <article
+                  class:list={[
+                    "product-card relative min-w-[270px] md:min-w-[305px] snap-start",
+                    "bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-100",
+                    "dark:border-slate-800 cursor-pointer select-none",
+                    "transition-all duration-400 hover:scale-105 hover:-translate-y-3",
+                    "hover:shadow-[0_20px_40px_rgba(59,130,246,.28)]",
+                    product.fade ? "card-fade opacity-50 hover:opacity-100" : "",
+                  ]}
+                  style={`animation-delay:${(index + 1) * 80}ms`}
+                  tabindex="0"
+                  role="button"
+                  aria-label={`Ver detalles de ${product.name}`}
+                  data-product={JSON.stringify({
+                    name: product.name,
+                    // Astro resuelve image.src como la URL pública optimizada
+                    image: product.image.src,
+                    originalPrice: product.originalPrice,
+                    price: product.price,
+                    savings: product.savings,
+                    discount: product.discount,
+                    discountColor: product.discountColor,
+                    specs: product.specs,
+                  })}
+                >
+                  <!-- Badge de descuento -->
+                  <span
+                    class:list={[
+                      "absolute top-5 right-5 z-10 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg",
+                      product.discountColor,
+                    ]}
+                  >
+                    {product.discount}
+                  </span>
+
+                  <!-- Imagen — componente nativo de Astro para optimización automática -->
+                  <div class="w-full aspect-[4/5] mb-4 rounded-lg overflow-hidden
+                              bg-slate-50 dark:bg-slate-800/30 flex items-center justify-center">
+                    <img
+                      src={product.image.src}
+                      alt={product.name}
+                      width={product.image.width}
+                      height={product.image.height}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-full object-contain p-2
+                             transition-transform duration-600 group-hover:scale-110"
+                    />
+                  </div>
+
+                  <!-- Info -->
+                  <div class="space-y-2">
+                    <h4 class="font-bold text-sm tracking-tight text-slate-900 dark:text-white
+                               leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {product.name}
+                    </h4>
+                    <div class="flex flex-col">
+                      <span class="text-xs text-slate-400 line-through">{product.originalPrice}</span>
+                      <span class="text-2xl font-black text-blue-600 leading-none">{product.price}</span>
+                      <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                        Ahorra {product.savings}
+                      </span>
+                    </div>
+
+                    <!-- Botón COMPRAR — abre WhatsApp directamente, sin modal -->
+                    <div class="flex justify-end pt-1">
+                      <button
+                        class="btn-comprar flex items-center gap-2 px-5 py-2.5 bg-blue-500 text-white
+                               rounded-lg text-sm font-bold hover:bg-blue-600
+                               transition-all hover:shadow-lg hover:scale-105 active:scale-95"
+                        data-name={product.name}
+                        data-price={product.price}
+                      >
+                        Comprar
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293
+                               2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0
+                               000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Separador -->
+        <div class="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent my-4 mb-16"></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+  MODAL DE DETALLE DE PRODUCTO
+════════════════════════════════════════════════════════ -->
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Detalle de producto">
+  <div id="modal-box">
+    <button id="modal-close" aria-label="Cerrar modal">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+  JAVASCRIPT (client-side)
+  Nota: se usa is:inline para acceder a los datos del DOM.
+  Toda la lógica de datos ya fue procesada en el frontmatter.
+════════════════════════════════════════════════════════ -->
+<script is:inline define:vars={{ WHATSAPP }}>
+  'use strict';
+
+  /* ── Controles de slider ── */
+  document.querySelectorAll('.slider-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(btn.dataset.slider);
+      if (el) el.scrollBy({ left: btn.dataset.dir === 'left' ? -320 : 320, behavior: 'smooth' });
+    });
+  });
+
+  /* ── Drag en sliders ── */
+  document.querySelectorAll('[id$="-slider"]').forEach((el) => {
+    let down = false, startX, scrollLeft;
+    el.addEventListener('mousedown', (e) => {
+      down = true;
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+      el.style.scrollBehavior = 'auto';
+    });
+    el.addEventListener('mouseleave', () => { down = false; });
+    el.addEventListener('mouseup', () => { down = false; el.style.scrollBehavior = 'smooth'; });
+    el.addEventListener('mousemove', (e) => {
+      if (!down) return;
+      e.preventDefault();
+      el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 2;
+    });
+  });
+
+  /* ── Modal ── */
+  const overlay   = document.getElementById('modal-overlay');
+  const modalBody = document.getElementById('modal-body');
+
+  function openModal(product) {
+    const waMsg = encodeURIComponent(
+      `Hola! Me interesa comprar: *${product.name}*\nPrecio: ${product.price}\n¿Tienen disponibilidad?`
+    );
+    const waUrl = `https://wa.me/${WHATSAPP}?text=${waMsg}`;
+
+    const specsHTML = product.specs
+      .map(([k, v]) => `
+        <div class="spec-row">
+          <span class="spec-key">${k}</span>
+          <span class="text-slate-700 dark:text-slate-300">${v}</span>
+        </div>`)
+      .join('');
+
+    modalBody.innerHTML = `
+      <div class="relative h-56 sm:h-72 bg-slate-100 dark:bg-slate-800 rounded-t-3xl overflow-hidden">
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          class="w-full h-full object-contain p-6"
+        />
+        <span class="absolute top-4 left-4 ${product.discountColor}
+                     text-white text-xs font-black px-3 py-1.5 rounded-full shadow">
+          ${product.discount}
+        </span>
+      </div>
+      <div class="p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6">
+          <h3 class="text-xl font-black text-slate-900 dark:text-white leading-tight">
+            ${product.name}
+          </h3>
+          <div class="text-right flex-shrink-0">
+            <p class="text-xs text-slate-400 line-through">${product.originalPrice}</p>
+            <p class="text-2xl font-black text-blue-600">${product.price}</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Ahorra ${product.savings}</p>
+          </div>
+        </div>
+        <p class="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-3">
+          Especificaciones Técnicas
+        </p>
+        <div class="mb-6">${specsHTML}</div>
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15
+              -.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463
+              -2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606
+              .134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025
+              -.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008
+              -.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0
+              1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262
+              .489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413
+              .248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004
+              a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86
+              9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03
+              6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884
+              m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096
+              .547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005
+              c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Comprar por WhatsApp
+        </a>
+      </div>`;
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  /* ── Delegación de eventos en tarjetas ── */
+  document.getElementById('sliders-container').addEventListener('click', (e) => {
+    // ¿Clic en "Comprar"?
+    const buyBtn = e.target.closest('.btn-comprar');
+    if (buyBtn) {
+      e.stopPropagation();
+      const msg = encodeURIComponent(
+        `Hola! Quiero comprar: *${buyBtn.dataset.name}*\nPrecio: ${buyBtn.dataset.price}\n¿Tienen stock disponible?`
+      );
+      window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
+      return;
+    }
+    // ¿Clic en tarjeta?
+    const card = e.target.closest('[data-product]');
+    if (card) openModal(JSON.parse(card.dataset.product));
+  });
+
+  // Accesibilidad: Enter / Space → modal
+  document.getElementById('sliders-container').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('[data-product]');
+    if (card) { e.preventDefault(); openModal(JSON.parse(card.dataset.product)); }
+  });
+</script>

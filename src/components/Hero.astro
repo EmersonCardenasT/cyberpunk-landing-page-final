@@ -1,0 +1,368 @@
+---
+import { TypingAnimation } from "@/components/ui/typing-animation";
+import bannerProductoBlanco from "../assets/img/banner_productos_blanco.png";
+import bannerProductoAzul from "../assets/img/banner_productos_azul.png";
+
+const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
+---
+
+<header
+  id="inicio"
+  class="relative pt-32 pb-20 px-6 overflow-hidden hero-gradient"
+>
+  <!-- Efectos de fondo animados -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-[100px] animate-pulse"
+    >
+    </div>
+    <div
+      class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-[120px] animate-pulse"
+      style="animation-delay: 1s;"
+    >
+    </div>
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/5 rounded-full blur-[150px]"
+    >
+    </div>
+  </div>
+
+  <div
+    class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10"
+  >
+    <div class="space-y-8">
+      <!-- Badge animado -->
+      <div
+        data-aos="fade-down"
+        data-aos-duration="800"
+        class="inline-flex items-center gap-2 bg-blue-600/10 dark:bg-blue-400/20 text-blue-500 px-4 py-2 rounded-full text-sm font-semibold border border-blue-600/20 backdrop-blur-sm"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
+          ></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-400"
+          ></span>
+        </span>
+        Tu tienda tecnológica de confianza
+      </div>
+
+      <!-- Título con TypingAnimation de MagicUI -->
+      <div>
+        <h1
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6"
+        >
+          <span class="block text-slate-900 dark:text-white">TU CELULAR</span>
+          <span class="block min-h-[1.2em] text-blue-600">
+            <div class="block min-h-[1.2em] text-blue-600">
+              <TypingAnimation client:only="react" words={typingTexts} loop />
+            </div>
+          </span>
+          <span class="block text-slate-900 dark:text-white mt-2"
+            >EN MINUTOS</span
+          >
+        </h1>
+      </div>
+
+      <!-- Descripción -->
+      <p
+        data-aos="fade-right"
+        data-aos-delay="200"
+        data-aos-duration="1000"
+        class="text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed"
+      >
+        <span class="font-semibold text-slate-900 dark:text-white"
+          >Venta de celulares nuevos y seminuevos</span
+        > con garantía.
+        <span class="font-semibold text-slate-900 dark:text-white"
+          >Reparación express</span
+        > de pantallas, baterías y más. Calidad profesional, precios justos.
+      </p>
+
+      <!-- Características destacadas -->
+      <div
+        data-aos="fade-right"
+        data-aos-delay="400"
+        data-aos-duration="1000"
+        class="grid grid-cols-2 gap-4"
+      >
+        <div
+          class="flex items-center gap-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-600/50 transition-all group"
+        >
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-blue-400/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+          >
+            <span class="material-icons-round text-blue-500 text-2xl"
+              >verified</span
+            >
+          </div>
+          <div>
+            <p class="font-bold text-slate-900 dark:text-white text-sm">
+              Garantía
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              En todas las reparaciones
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-600/50 transition-all group"
+        >
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-blue-400/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+          >
+            <span class="material-icons-round text-blue-500 text-2xl"
+              >schedule</span
+            >
+          </div>
+          <div>
+            <p class="font-bold text-slate-900 dark:text-white text-sm">
+              Servicio Rápido
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              Reparación en 30 min
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-600/50 transition-all group"
+        >
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-blue-400/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+          >
+            <span class="material-icons-round text-blue-500 text-2xl"
+              >local_offer</span
+            >
+          </div>
+          <div>
+            <p class="font-bold text-slate-900 dark:text-white text-sm">
+              Mejores Precios
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              Financiamiento disponible
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-600/50 transition-all group"
+        >
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-blue-400/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+          >
+            <span class="material-icons-round text-blue-500 text-2xl"
+              >smartphone</span
+            >
+          </div>
+          <div>
+            <p class="font-bold text-slate-900 dark:text-white text-sm">
+              Todas las Marcas
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              iPhone, Samsung y más
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div
+        data-aos="fade-right"
+        data-aos-delay="600"
+        data-aos-duration="1000"
+        class="flex flex-wrap gap-4"
+      >
+        <a
+          href="#products"
+          class="group relative bg-blue-600 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-glow transition-all hover:scale-105 overflow-hidden"
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            <span class="material-icons-round text-xl">shopping_cart</span>
+            COMPRAR CELULAR
+          </span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+          </div>
+        </a>
+
+        <a
+          href="#reparacion"
+          class="group relative px-8 py-4 rounded-full font-bold border-2 border-blue-600 text-blue-500 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 overflow-hidden"
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            <span class="material-icons-round text-xl">build</span>
+            REPARAR MI EQUIPO
+          </span>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div
+        data-aos="fade-right"
+        data-aos-delay="800"
+        data-aos-duration="1000"
+        class="flex flex-wrap gap-8 pt-6 border-t border-slate-200 dark:border-slate-800"
+      >
+        <div class="text-center">
+          <p class="text-3xl font-bold text-blue-500">5000+</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Clientes Satisfechos
+          </p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl font-bold text-blue-500">10K+</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Reparaciones</p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl font-bold text-blue-500">4.9★</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Valoración</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIV DE LAS IMÁGENES -->
+    <div class="relative flex justify-center items-center overflow-visible">
+      <!-- Efectos decorativos -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-500/20 rounded-full blur-[100px] animate-pulse"
+      >
+      </div>
+
+      <div
+        data-aos="fade-left"
+        data-aos-duration="1200"
+        class="hero-composite relative"
+      >
+        <!-- Floating badges -->
+        <div
+          class="absolute -top-8 -left-8 bg-white dark:bg-slate-800 rounded-2xl shadow-glow p-4 animate-float z-20 hidden lg:block"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center"
+            >
+              <span class="material-icons-round text-green-500 text-2xl"
+                >check_circle</span
+              >
+            </div>
+            <div>
+              <p class="font-bold text-sm">Garantía</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400">12 meses</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute -bottom-8 -right-8 bg-white dark:bg-slate-800 rounded-2xl shadow-glow p-4 animate-float-delayed z-20 hidden lg:block"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center"
+            >
+              <span class="material-icons-round text-blue-500 text-2xl"
+                >local_offer</span
+              >
+            </div>
+            <div>
+              <p class="font-bold text-sm">Envio <b>Gratis</b></p>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                Por su compra
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modo claro -->
+        <img
+          src={bannerProductoBlanco.src}
+          alt="Productos Cyberpunk"
+          fetchpriority="high"
+          decoding="async"
+          class="hero-image hidden dark:block relative z-10 drop-shadow-2xl"
+        />
+
+        <!-- Modo oscuro -->
+        <img
+          src={bannerProductoAzul.src}
+          width="800"
+          alt="Productos Cyberpunk"
+          fetchpriority="high"
+          decoding="async"
+          class="hero-image block dark:hidden relative z-10 drop-shadow-2xl"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <a
+      href="#products"
+      class="flex flex-col items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors"
+    >
+      <span class="text-xs font-semibold uppercase tracking-wider">Desliza</span
+      >
+      <span class="material-icons-round">keyboard_arrow_down</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  /* Animaciones flotantes */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-15px) rotate(-2deg);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  /* Mejoras en hero-composite */
+  .hero-composite {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  .hero-composite:hover {
+    transform: scale(1.02);
+  }
+
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 25px 50px rgba(59, 130, 246, 0.3));
+    transition: filter 0.3s ease;
+  }
+
+  .hero-image:hover {
+    filter: drop-shadow(0 30px 60px rgba(59, 130, 246, 0.4));
+  }
+</style>

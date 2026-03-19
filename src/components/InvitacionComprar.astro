@@ -1,0 +1,199 @@
+---
+import LogoApple from "../assets/img/svg_logo_apple.svg";
+import LogoSamsung from "../assets/img/svg_logo_samsung.svg";
+import LogoXiaomi from "../assets/img/svg_logo_xiaomi.svg";
+import LogoHuawei from "../assets/img/svg_logo_huawei.svg";
+import LogoMoto from "../assets/img/svg_logo_moto.svg";
+import LogoVivo from "../assets/img/svg_logo_vivo.svg";
+import LogoOneplus from "../assets/img/svg_logo_oneplus.svg";
+
+// Datos centralizados — añade o quita marcas aquí
+const BRANDS = [
+  { src: LogoApple.src,   alt: "Apple",    label: "Apple",    color: "#555555" },
+  { src: LogoSamsung.src, alt: "Samsung",  label: "Samsung",  color: "#1428A0" },
+  { src: LogoXiaomi.src,  alt: "Xiaomi",   label: "Xiaomi",   color: "#FF6900" },
+  { src: LogoHuawei.src,  alt: "Huawei",   label: "Huawei",   color: "#CF0A2C" },
+  { src: LogoMoto.src,    alt: "Motorola", label: "Motorola", color: "#0053A0" },
+  { src: LogoVivo.src,    alt: "Vivo",     label: "Vivo",     color: "#415FFF" },
+  { src: LogoOneplus.src, alt: "OnePlus",  label: "OnePlus",  color: "#F5010C" },
+];
+
+// Triplicamos para garantizar loop sin cortes visibles
+const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
+---
+
+<style>
+  /* ── Carrusel scroll continuo ── */
+  @keyframes brands-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% / 3)); }
+  }
+
+  .brands-track {
+    animation: brands-scroll 28s linear infinite;
+    will-change: transform;
+  }
+
+  /* Pausa al hover en la fila completa */
+  .brands-wrapper:hover .brands-track {
+    animation-play-state: paused;
+  }
+
+  /* ── Tarjeta de marca ── */
+  .brand-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 28px;
+    border-radius: 16px;
+    background: rgba(148, 163, 184, 0.07);
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    backdrop-filter: blur(8px);
+    cursor: default;
+    transition:
+      background   0.35s ease,
+      border-color 0.35s ease,
+      transform    0.35s ease,
+      box-shadow   0.35s ease;
+    flex-shrink: 0;
+  }
+
+  /* Fondo de color al hover — se controla con CSS variable */
+  .brand-card:hover {
+    background: color-mix(in srgb, var(--brand-color) 10%, transparent);
+    border-color: color-mix(in srgb, var(--brand-color) 40%, transparent);
+    transform: translateY(-4px) scale(1.06);
+    box-shadow:
+      0 12px 32px color-mix(in srgb, var(--brand-color) 20%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--brand-color) 25%, transparent);
+  }
+
+  /* Imagen — gris por defecto, color al hover */
+  .brand-card img {
+    width: 64px;
+    height: 40px;
+    object-fit: contain;
+    filter: grayscale(1) opacity(0.45);
+    transition: filter 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .brand-card:hover img {
+    filter: grayscale(0) opacity(1);
+    transform: scale(1.08);
+  }
+
+  /* Label de la marca */
+  .brand-card span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(148 163 184 / 0.55);
+    transition: color 0.35s ease;
+    white-space: nowrap;
+  }
+
+  .brand-card:hover span {
+    color: var(--brand-color);
+  }
+
+  /* Máscaras de fade en los bordes */
+  .brands-mask-left,
+  .brands-mask-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .brands-mask-left {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+  .brands-mask-right {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
+
+  /* Dark mode masks */
+  :global(.dark) .brands-mask-left  { background: linear-gradient(to right,  rgb(2 6 23), transparent); }
+  :global(.dark) .brands-mask-right { background: linear-gradient(to left, rgb(2 6 23), transparent); }
+</style>
+
+<!-- ════════════════════════════════════════════════════
+  SECCIÓN CTA + CARRUSEL DE MARCAS
+════════════════════════════════════════════════════ -->
+<section class="py-24 px-6 relative overflow-hidden">
+
+  <!-- CTA -->
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-8
+               bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
+      ¿LISTO PARA ACTUALIZAR TU MUNDO?
+    </h2>
+    <p class="text-slate-600 dark:text-slate-400 mb-10 text-lg max-w-2xl mx-auto">
+      Únete hoy a los miles que ya están moldeando el futuro con tecnología Cyberpunk.
+    </p>
+    <a
+      href="https://wa.me/51927854195?text=Hola%20¡Me%20interesa%20comprar%20un%20celular%20en%20Cyberpunk!"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-blue-600 text-white px-12 py-5 rounded-full
+             font-bold shadow-lg transition-all duration-300
+             hover:scale-105 hover:shadow-blue-500/30 hover:shadow-xl"
+    >
+      COMPRAR AHORA
+    </a>
+  </div>
+
+  <!-- Fondo decorativo -->
+  <div class="absolute inset-0 bg-gradient-to-b from-blue-600/5 via-blue-500/10 to-transparent
+              dark:from-blue-400/10 dark:via-blue-500/20 blur-[120px] pointer-events-none"></div>
+
+  <!-- ── Separador ── -->
+  <div class="mt-20 mb-10 flex items-center justify-center gap-3 max-w-xs mx-auto">
+    <div class="h-px flex-1 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-700"></div>
+    <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-slate-400 dark:text-slate-500">
+      Marcas oficiales
+    </span>
+    <div class="h-px flex-1 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-700"></div>
+  </div>
+
+  <!-- ── Carrusel infinito ── -->
+  <div class="brands-wrapper relative -mx-6 overflow-hidden">
+
+    <div class="brands-mask-left"  aria-hidden="true"></div>
+    <div class="brands-mask-right" aria-hidden="true"></div>
+
+    <div class="brands-track flex items-center gap-4 py-4 px-6" aria-label="Marcas asociadas">
+      {TRACK.map((brand, i) => (
+        <div
+          class="brand-card"
+          style={`--brand-color: ${brand.color};`}
+          role="img"
+          aria-label={brand.alt}
+          aria-hidden={i >= BRANDS.length ? "true" : "false"}
+        >
+          <img
+            src={brand.src}
+            alt={brand.alt}
+            width="64"
+            height="40"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+          <span>{brand.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</section>

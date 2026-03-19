@@ -1,0 +1,98 @@
+---
+import TabletPremiun from "../assets/img/tablet_premium.webp"
+import AudioPro from "../assets/img/audifonos.webp"
+import Gaming from "../assets/img/gaming.jpg"
+import Smartwaths from "../assets/img/smartwaths.jpg"
+import ServicioTecnico from "../assets/img/servicio_tecnico.jpg"
+import ServicioTecnicoCompu from "../assets/img/servicio_tecnico_compu.jpg"
+import EcosistemaApple from "../assets/img/ecosistema_apple.jpg"
+---
+
+<!-- GALERIA -->
+  <section id="gallery" class="py-24 px-6 bg-white dark:bg-slate-950">
+    <div class="max-w-[1600px] mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-3">Ecosistema Completo</p>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">Explora la línea</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 gap-4 h-auto md:h-[900px]">
+
+        <div
+          class="col-span-2 md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+          <img alt="Premium Tablet" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-12 transition-transform duration-700 group-hover:scale-110"
+            src={TabletPremiun.src} />
+          <div class="absolute bottom-8 left-8">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Productividad</p>
+            <h3 class="text-xl font-bold">Tablets de última generación</h3>
+          </div>
+        </div>
+
+        <div
+          class="col-span-1 md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+          <img alt="Audio" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
+            src={AudioPro.src} />
+          <div class="absolute bottom-6 left-6">
+            <h3 class="text-sm font-bold uppercase tracking-tight">Audio Pro</h3>
+          </div>
+        </div>
+
+        <div
+          class="col-span-1 md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+          <img alt="Gaming" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
+            src={Gaming.src} />
+          <div class="absolute bottom-6 left-6 text-white">
+            <h3 class="text-sm font-bold uppercase tracking-tight">Gaming Zone</h3>
+          </div>
+        </div>
+
+        <div
+          class="col-span-2 md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-slate-900 dark:bg-slate-800 border border-slate-800">
+          <img alt="Watch" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-10 transition-transform duration-700 group-hover:scale-110"
+            src={Smartwaths.src} />
+          <div class="absolute top-8 left-8">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Wearables</p>
+            <h3 class="text-xl font-bold text-white">Relojes Inteligentes</h3>
+          </div>
+        </div>
+
+        <div
+          class="col-span-1 md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+          <img alt="Camera" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
+            src={ServicioTecnico.src} />
+          <div class="absolute bottom-6 left-6">
+            <h3 class="text-sm font-bold">Servicio Tecnico</h3>
+          </div>
+        </div>
+
+        <div
+          class="col-span-1 md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <img alt="Console" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
+            src={ServicioTecnicoCompu.src} />
+          <div class="absolute bottom-6 left-6">
+            <h3 class="text-sm font-bold">Ordenadores</h3>
+          </div>
+        </div>
+
+        <div
+          class="col-span-2 md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30">
+          <img alt="Accessories" loading="lazy" decoding="async"
+            class="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-105"
+            src={EcosistemaApple.src} />
+          <div class="absolute top-8 right-8 text-right">
+            <p class="text-[10px] uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">Accesorios</p>
+            <h3 class="text-lg font-bold">Ecosistema Completo</h3>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>

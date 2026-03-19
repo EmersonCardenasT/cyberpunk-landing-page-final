@@ -1,0 +1,41 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Benefits from "../components/Benefits.astro";
+import ProductoDestacado from "../components/ProductoDestacado.astro";
+import Categorie from "../components/Categorie.astro";
+import Products from "../components/Products.astro";
+import MissionVision from "../components/MissionVision.astro";
+import Reparacion from "../components/Reparacion.astro";
+import Gallery from "../components/Gallery.astro";
+import Testimonios from "../components/Testimonios.astro";
+import InvitacionComprar from "../components/InvitacionComprar.astro";
+import MethodPayment from "../components/MethodPayment.astro";
+import Footer from "../components/Footer.astro";
+import ButtonWsScroll from "../components/ButtonWsScroll.astro";
+// import { TypingAnimation } from "@/components/ui/typing-animation";
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+
+<!-- <TypingAnimation client:load words={["Design 🎨", "Build 🔨", "Ship 🚀"]} loop /> -->
+
+  <Navbar />
+  <Hero />
+  <Benefits />
+  <ProductoDestacado />
+  <Categorie />
+  <Products />
+  <MissionVision />
+  <Reparacion />
+  <Gallery />
+  <Testimonios />
+  <InvitacionComprar />
+  <MethodPayment />
+  <Footer />
+  <ButtonWsScroll />
+</Layout>

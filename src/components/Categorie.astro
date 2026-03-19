@@ -1,0 +1,263 @@
+---
+import categoriaIphone from "../assets/img/categoria_iphone.jpg";
+import categoriaAccesorios from "../assets/img/accesorios.webp";
+import categoriaServicioTecnico from "../assets/img/servicio_tecnico.jpg";
+import categoriaSmartwatch from "../assets/img/categoria_smartwatch.jpg";
+import categoriaTv from "../assets/img/categoria_tv.jpg";
+import categoriaNotebook from "../assets/img/categoria_mac.jpg";
+---
+
+<!-- CATEGORÍAS DE PRODUCTOS - VERSIÓN TAILWIND PURO -->
+  <section id="categories" class="py-16 px-6 relative overflow-hidden">
+    <!-- Efectos de fondo -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none">
+    </div>
+
+    <div class="mx-auto relative z-10">
+      <!-- TÍTULO -->
+      <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
+        <p class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-2 flex items-center justify-center gap-2">
+          <span class="material-icons-round text-base">category</span>
+          Explora
+        </p>
+        <h2
+          class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3 bg-gradient-to-r from-slate-900 via-primary to-slate-900 dark:from-white dark:via-primary dark:to-white bg-clip-text text-transparent">
+          Categorías Destacadas
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">
+          Descubre nuestra amplia selección de productos y servicios tecnológicos
+        </p>
+      </div>
+
+      <!-- Grid de Categorías Centrado -->
+      <div class="flex justify-center">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 w-full max-w-7xl">
+
+          <!-- CELULARES -->
+          <a href="#products" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50"
+            class="group relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden w-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-primary/50">
+
+            <div
+              class="absolute top-2 left-2 z-10 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="material-icons-round text-xs">whatshot</span>
+              Popular
+            </div>
+
+            <div class="aspect-[3/4] overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <img src={categoriaIphone.src} alt="Celulares premium" loading="lazy" decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div class="p-3 text-center relative">
+              <div class="flex items-center justify-center gap-1 mb-1">
+                <span
+                  class="material-icons-round text-blue-600 text-lg group-hover:scale-110 transition-transform">smartphone</span>
+                <h3 class="text-base font-bold group-hover:text-blue-600 transition-colors">Celulares</h3>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">
+                Gama media y alta
+              </p>
+              <div
+                class="flex items-center justify-center gap-1 text-[10px] text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Ver catálogo
+                <span
+                  class="material-icons-round text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+            </div>
+          </a>
+
+          <!-- ACCESORIOS -->
+          <a href="#products" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100"
+            class="group relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden w-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-primary/50">
+
+            <div
+              class="absolute top-2 left-2 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="material-icons-round text-xs">local_offer</span>
+              Ofertas
+            </div>
+
+            <div class="aspect-[3/4] overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <img src={categoriaAccesorios.src} alt="Accesorios tecnológicos" loading="lazy" decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div class="p-3 text-center relative">
+              <div class="flex items-center justify-center gap-1 mb-1">
+                <span
+                  class="material-icons-round text-blue-600 text-lg group-hover:scale-110 transition-transform">headphones</span>
+                <h3 class="text-base font-bold group-hover:text-blue-600 transition-colors">Accesorios</h3>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">
+                Fundas, cargadores y más
+              </p>
+              <div
+                class="flex items-center justify-center gap-1 text-[10px] text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Ver productos
+                <span
+                  class="material-icons-round text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+            </div>
+          </a>
+
+          <!-- REPARACIONES -->
+          <a href="#reparacion" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"
+            class="group relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden w-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-primary/50">
+
+            <div
+              class="absolute top-2 left-2 z-10 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="material-icons-round text-xs">verified</span>
+              Garantía
+            </div>
+
+            <div class="aspect-[3/4] overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <img src={categoriaServicioTecnico.src} alt="Servicio técnico profesional" loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div class="p-3 text-center relative">
+              <div class="flex items-center justify-center gap-1 mb-1">
+                <span
+                  class="material-icons-round text-blue-600 text-lg group-hover:scale-110 transition-transform">build_circle</span>
+                <h3 class="text-base font-bold group-hover:text-blue-600 transition-colors">Reparaciones</h3>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">
+                Servicio express 30 min
+              </p>
+              <div
+                class="flex items-center justify-center gap-1 text-[10px] text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Solicitar servicio
+                <span
+                  class="material-icons-round text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+            </div>
+          </a>
+
+          <!-- SMARTWATCH -->
+          <a href="#products" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"
+            class="group relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden w-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-primary/50">
+
+            <div class="aspect-[3/4] overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <img src={categoriaSmartwatch.src} alt="Smartwatch premium" loading="lazy" decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div class="p-3 text-center relative">
+              <div class="flex items-center justify-center gap-1 mb-1">
+                <span
+                  class="material-icons-round text-blue-600 text-lg group-hover:scale-110 transition-transform">watch</span>
+                <h3 class="text-base font-bold group-hover:text-blue-600 transition-colors">Smartwatches</h3>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">
+                Tecnología portátil
+              </p>
+              <div
+                class="flex items-center justify-center gap-1 text-[10px] text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Ver modelos
+                <span
+                  class="material-icons-round text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+            </div>
+          </a>
+
+          <!-- TV -->
+          <a href="#products" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250"
+            class="group relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden w-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-primary/50">
+
+            <div class="aspect-[3/4] overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <img src={categoriaTv.src} alt="TV premium" loading="lazy" decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div class="p-3 text-center relative">
+              <div class="flex items-center justify-center gap-1 mb-1">
+                <span
+                  class="material-icons-round text-blue-600 text-lg group-hover:scale-110 transition-transform">tv</span>
+                <h3 class="text-base font-bold group-hover:text-blue-600 transition-colors">TV & Pantallas</h3>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">
+                4K, OLED y Smart TV
+              </p>
+              <div
+                class="flex items-center justify-center gap-1 text-[10px] text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Explorar
+                <span
+                  class="material-icons-round text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+            </div>
+          </a>
+
+          <!-- NOTE BOOK -->
+          <a href="#products" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"
+            class="group relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden w-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-primary/50">
+
+            <div class="aspect-[3/4] overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <img src={categoriaNotebook.src} alt="Notebook premium" loading="lazy" decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div class="p-3 text-center relative">
+              <div class="flex items-center justify-center gap-1 mb-1">
+                <span
+                  class="material-icons-round text-blue-600 text-lg group-hover:scale-110 transition-transform">laptop_mac</span>
+                <h3 class="text-base font-bold group-hover:text-blue-600 transition-colors">Notebook</h3>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">
+                Potencia profesional
+              </p>
+              <div
+                class="flex items-center justify-center gap-1 text-[10px] text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Descubrir
+                <span
+                  class="material-icons-round text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>

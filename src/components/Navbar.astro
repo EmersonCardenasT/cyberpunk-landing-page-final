@@ -1,0 +1,235 @@
+---
+import logoLight from "../assets/img/logo_cyberpunk_invertido.png";
+import logoDark from "../assets/img/logo_cyberpunk.png";
+
+const NAV_LINKS = [
+  { href: "#inicio",      label: "Inicio",      icon: "home" },
+  { href: "#categories",  label: "Categorías",  icon: "category" },
+  { href: "#products",    label: "Productos",   icon: "shopping_bag" },
+  { href: "#vision",      label: "Nosotros",    icon: "info" },
+  { href: "#gallery",     label: "Galería",     icon: "photo_library" },
+  { href: "#testimonios", label: "Testimonios", icon: "star" },
+];
+
+const WA_URL = "https://wa.me/51927854195?text=Hola!%20Quiero%20cotizar%20un%20celular";
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 w-full z-50 glass-effect border-slate-200/50 dark:border-slate-800/50 backdrop-blur-xl"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+    <div class="flex items-center justify-between gap-4">
+
+      <!-- ── Logo ── -->
+      <a data-aos="fade-down" data-aos-duration="1000"  href="#inicio" class="flex items-center gap-3 group flex-shrink-0" aria-label="Cyberpunk Store - Inicio">
+        <img
+          src={logoLight.src}
+          alt="Cyberpunk Store"
+          width={logoLight.width}
+          height={logoLight.height}
+          class="h-9 sm:h-10 w-auto block dark:hidden transition-transform group-hover:scale-110"
+        />
+        <img
+          src={logoDark.src}
+          alt="Cyberpunk Store"
+          width={logoDark.width}
+          height={logoDark.height}
+          class="h-9 sm:h-10 w-auto hidden dark:block transition-transform group-hover:scale-110"
+        />
+      </a>
+
+      <!-- ── Nav desktop (md+) ── -->
+      <div class="hidden md:flex items-center gap-0.5 lg:gap-1">
+        {NAV_LINKS.map((link, index) => (
+          <a
+            href={link.href}
+            class="nav-link relative px-3 lg:px-4 py-2 rounded-lg text-sm font-medium
+                   text-slate-700 dark:text-slate-300
+                   hover:text-blue-600 dark:hover:text-blue-400
+                   hover:bg-slate-100 dark:hover:bg-slate-800/50
+                   transition-all duration-200 group
+                   "
+
+              data-aos="fade-down"
+            data-aos-duration="800"
+            data-aos-delay={100 + (index * 100)}
+                   
+          >
+            <span class="relative z-10 whitespace-nowrap">{link.label}</span>
+            <span class="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-0.5
+                         bg-blue-500 group-hover:w-3/4 transition-all duration-300 rounded-full">
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <!-- ── Acciones derecha ── -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+
+        <!-- WhatsApp — texto visible en lg+ -->
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white
+                 px-3 lg:px-4 py-2 rounded-full font-semibold text-sm
+                 transition-all hover:scale-105 shadow-md hover:shadow-green-500/40 group"
+          aria-label="Cotizar por WhatsApp"
+          data-aos="fade-down" data-aos-duration="2400" 
+        >
+          <!-- Icono WA SVG -->
+          <svg class="w-4 h-4 flex-shrink-0 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span class="hidden lg:inline">Cotizar</span>
+        </a>
+
+        <!-- Dark mode toggle -->
+        <button
+          id="theme-toggle"
+          class="p-2 sm:p-2.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800
+                 transition-all hover:scale-110 group"
+          aria-label="Cambiar tema"
+          aria-label="Cotizar por WhatsApp"
+          data-aos="fade-down" data-aos-duration="2600" 
+        >
+          <span class="material-icons-round dark:hidden text-slate-700 group-hover:text-blue-600 transition-colors text-xl">
+            dark_mode
+          </span>
+          <span class="material-icons-round hidden dark:block text-slate-300 group-hover:text-yellow-400 transition-colors text-xl">
+            light_mode
+          </span>
+        </button>
+
+        <!-- Hamburger — solo en móvil/tablet (oculto en md+) -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 sm:p-2.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800
+                 transition-all hover:scale-110"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <!-- Las dos capas del icono se alternan con JS -->
+          <span id="icon-menu"  class="material-icons-round text-slate-700 dark:text-slate-300 text-xl block">menu</span>
+          <span id="icon-close" class="material-icons-round text-slate-700 dark:text-slate-300 text-xl hidden">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Menú móvil ── -->
+    <div
+      id="mobile-menu"
+      class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out"
+      aria-hidden="true"
+    >
+      <div class="py-3 space-y-1 border-t border-slate-200 dark:border-slate-800 mt-3">
+
+        {NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            data-mobile-link
+            class="flex items-center gap-3 px-4 py-3 rounded-xl
+                   text-slate-700 dark:text-slate-300
+                   hover:bg-slate-100 dark:hover:bg-slate-800/50
+                   hover:text-blue-600 dark:hover:text-blue-400
+                   transition-all duration-200 group"
+          >
+            <span class="material-icons-round text-blue-500 text-xl flex-shrink-0">{link.icon}</span>
+            <span class="font-medium">{link.label}</span>
+            <span class="material-icons-round ml-auto text-slate-400 group-hover:text-blue-500
+                         group-hover:translate-x-1 transition-all text-base">
+              arrow_forward
+            </span>
+          </a>
+        ))}
+
+        <!-- WhatsApp en menú móvil -->
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-mobile-link
+          class="flex items-center justify-center gap-2 mt-3 bg-green-500 hover:bg-green-600
+                 text-white px-6 py-3 rounded-full font-semibold transition-all"
+        >
+          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Cotizar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indicador de scroll -->
+  <div
+    id="scroll-indicator"
+    class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-150"
+    style="width: 0%"
+    aria-hidden="true"
+  ></div>
+</nav>
+
+<script>
+  // ── Menú móvil ──────────────────────────────────────────
+  const btn        = document.getElementById('mobile-menu-btn')!;
+  const menu       = document.getElementById('mobile-menu')!;
+  const iconMenu   = document.getElementById('icon-menu')!;
+  const iconClose  = document.getElementById('icon-close')!;
+  let   isOpen     = false;
+
+  function openMenu() {
+    isOpen = true;
+    // Calcula el alto real del contenido para la animación suave
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+    iconMenu.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // evita scroll del fondo en móvil
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.style.maxHeight = '0';
+    menu.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    iconMenu.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    isOpen ? closeMenu() : openMenu();
+  }
+
+  // Botón hamburguesa
+  btn.addEventListener('click', toggleMenu);
+
+  // Cerrar al hacer clic en cualquier enlace del menú móvil
+  document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar al redimensionar a pantalla >= md (768px)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && isOpen) closeMenu();
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) closeMenu();
+  });
+
+  // ── Indicador de scroll ──────────────────────────────────
+  const scrollBar = document.getElementById('scroll-indicator')!;
+
+  window.addEventListener('scroll', () => {
+    const scrolled  = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const pct       = maxScroll > 0 ? (scrolled / maxScroll) * 100 : 0;
+    scrollBar.style.width = pct + '%';
+  }, { passive: true });
+</script>

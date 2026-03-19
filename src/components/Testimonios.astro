@@ -1,0 +1,547 @@
+---
+// ── Datos de testimonios (procesados en build time, sin JS extra)
+const ROW1 = [
+  {
+    initial: "C",
+    gradient: "from-green-400 to-green-600",
+    name: "Carlos M.",
+    handle: "@carlosm",
+    text: '"Compré un iPhone 15 Pro y el servicio fue excepcional. Precio muy competitivo. 100% recomendado."',
+    stars: 5,
+  },
+  {
+    initial: "M",
+    gradient: "from-pink-400 to-pink-600",
+    name: "María G.",
+    handle: "@mariag",
+    text: '"Llevo años comprando aquí. Precios justos, atención personalizada. Mi familia completa compra aquí."',
+    stars: 5,
+  },
+  {
+    initial: "L",
+    gradient: "from-blue-400 to-blue-600",
+    name: "Luis R.",
+    handle: "@luisr",
+    text: '"Mi Samsung se cayó y lo repararon en 45 minutos con garantía. Quedó como nuevo. Excelente servicio."',
+    stars: 5,
+  },
+  {
+    initial: "A",
+    gradient: "from-purple-400 to-purple-600",
+    name: "Ana M.",
+    handle: "@anam",
+    text: '"Necesitaba un Xiaomi urgente. Facilidades de pago sin interés. Entrega inmediata y teléfono impecable."',
+    stars: 5,
+  },
+  {
+    initial: "J",
+    gradient: "from-teal-400 to-teal-600",
+    name: "Jorge P.",
+    handle: "@jorgep",
+    text: '"Asesoría increíble. Me ayudaron a elegir el celular perfecto para mis necesidades y presupuesto."',
+    stars: 5,
+  },
+];
+
+const ROW2 = [
+  {
+    initial: "R",
+    gradient: "from-orange-400 to-orange-600",
+    name: "Roberto S.",
+    handle: "@robertos",
+    text: '"Compré un celular seminuevo en perfectas condiciones. Ahorré mucho dinero. Muy satisfecho con la compra."',
+    stars: 5,
+  },
+  {
+    initial: "P",
+    gradient: "from-cyan-400 to-cyan-600",
+    name: "Patricia L.",
+    handle: "@patricial",
+    text: '"Cambiaron la batería de mi Motorola en 20 minutos. El técnico fue muy profesional. Calidad garantizada."',
+    stars: 5,
+  },
+  {
+    initial: "D",
+    gradient: "from-red-400 to-red-600",
+    name: "Diego F.",
+    handle: "@diegof",
+    text: '"Atención rápida y profesional. Encontré el accesorio que buscaba al mejor precio. Volveré seguro."',
+    stars: 5,
+  },
+  {
+    initial: "S",
+    gradient: "from-indigo-400 to-indigo-600",
+    name: "Sandra T.",
+    handle: "@sandrat",
+    text: '"Garantía real y honesta. Cuando tuve un problema, me lo solucionaron sin excusas. Confianza total."',
+    stars: 5,
+  },
+  {
+    initial: "V",
+    gradient: "from-rose-400 to-rose-600",
+    name: "Valentina R.",
+    handle: "@valr",
+    text: '"La pantalla de mi iPhone quedó como nueva. Servicio rápido, precio justo y trato amable. Recomiendo."',
+    stars: 5,
+  },
+];
+
+// Duplicamos 3 veces en build time para el loop infinito del carrusel
+const TRACK1 = [...ROW1, ...ROW1, ...ROW1];
+const TRACK2 = [...ROW2, ...ROW2, ...ROW2];
+
+// Stats (separadas para mantener datos centralizados en el frontmatter)
+const STATS = [
+  {
+    target: 10000,
+    suffix: "+",
+    prefix: "",
+    label: "Clientes Felices",
+    float: false,
+    static: false,
+  },
+  {
+    target: 4.8,
+    suffix: "/5",
+    prefix: "",
+    label: "Valoración Media",
+    float: true,
+    static: false,
+    stars: true,
+  },
+  {
+    target: 98,
+    suffix: "%",
+    prefix: "",
+    label: "Recomendarían",
+    float: false,
+    static: false,
+  },
+  {
+    target: 0,
+    suffix: "",
+    prefix: "",
+    label: "Soporte",
+    float: false,
+    static: true,
+    staticVal: "24/7",
+  },
+];
+---
+
+<style>
+  /* ── Carrusel animaciones ── */
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scroll-right {
+    animation: scroll-right 35s linear infinite;
+  }
+  .animate-scroll-left {
+    animation: scroll-left 35s linear infinite;
+  }
+
+  /* Pausar al hover sobre la fila contenedora */
+  .carousel-row:hover .animate-scroll-right,
+  .carousel-row:hover .animate-scroll-left {
+    animation-play-state: paused;
+  }
+
+  /* ── Tarjeta mini ── */
+  .testimonial-mini {
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .testimonial-mini:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(59, 130, 246, 0.18);
+  }
+  .testimonial-mini::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 1.5px;
+    background: linear-gradient(
+      135deg,
+      transparent,
+      rgba(59, 130, 246, 0.5),
+      transparent
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .testimonial-mini:hover::before {
+    opacity: 1;
+  }
+
+  /* ── Stats — animación de conteo ── */
+  .stat-number {
+    font-variant-numeric: tabular-nums;
+    transition: color 0.3s;
+  }
+
+  @keyframes stat-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.75;
+    }
+  }
+  .counting {
+    animation: stat-pulse 0.6s ease infinite;
+  }
+
+  /* ── Fade-in de sección ── */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade-up {
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .stat-item:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .stat-item:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .stat-item:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .stat-item:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+</style>
+
+<!-- ════════════════════════════════════════════════════
+  SECCIÓN TESTIMONIOS
+════════════════════════════════════════════════════ -->
+<section
+  id="testimonios"
+  class="py-20 md:py-28 relative overflow-hidden bg-white dark:bg-slate-950"
+>
+  <!-- Fondos decorativos -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/5 to-transparent pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-[120px] pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-500/8 rounded-full blur-[100px] pointer-events-none"
+  >
+  </div>
+
+  <div class="w-full relative z-10">
+    <!-- ── Header ── -->
+    <div class="text-center mb-14 md:mb-20 max-w-7xl mx-auto px-4 sm:px-6">
+      <p
+        class="text-blue-600 font-bold tracking-widest uppercase text-xs sm:text-sm mb-3
+              flex items-center justify-center gap-2"
+      >
+        <span class="material-icons-round text-base">groups</span>
+        Comunidad
+      </p>
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4
+               bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900
+               dark:from-white dark:via-blue-600 dark:to-white
+               bg-clip-text text-transparent leading-tight"
+      >
+        LO QUE DICEN NUESTROS CLIENTES
+      </h2>
+      <p
+        class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+      >
+        Más de 10,000 clientes satisfechos confían en nosotros
+      </p>
+    </div>
+
+    <!-- ── Carruseles ── -->
+    <div class="space-y-5 md:space-y-6 mb-16 md:mb-20">
+      <!-- FILA 1 — se mueve hacia la derecha -->
+      <div class="relative overflow-hidden carousel-row">
+        <div
+          class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10
+                    bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none"
+        >
+        </div>
+        <div
+          class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10
+                    bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none"
+        >
+        </div>
+
+        <div class="flex gap-4 md:gap-5 animate-scroll-right">
+          {
+            TRACK1.map((t) => (
+              <div
+                class="testimonial-mini flex-shrink-0 w-[300px] sm:w-[330px] md:w-[360px]
+                        bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg rounded-2xl p-5 md:p-6
+                        border border-slate-200 dark:border-slate-800"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <div
+                    class:list={[
+                      "w-11 h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br flex items-center justify-center",
+                      "text-white font-bold text-base md:text-lg flex-shrink-0 shadow-md",
+                      t.gradient,
+                    ]}
+                  >
+                    {t.initial}
+                  </div>
+                  <div>
+                    <p class="font-bold text-slate-900 dark:text-white text-sm md:text-base leading-tight">
+                      {t.name}
+                    </p>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">
+                      {t.handle}
+                    </p>
+                  </div>
+                  <span class="material-icons-round text-blue-600 text-base ml-auto flex-shrink-0">
+                    verified
+                  </span>
+                </div>
+                <p class="text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                  {t.text}
+                </p>
+                <div class="flex gap-0.5">
+                  {Array.from({ length: t.stars }).map(() => (
+                    <span class="material-icons-round text-yellow-400 text-sm md:text-base">
+                      star
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- FILA 2 — se mueve hacia la izquierda -->
+      <div class="relative overflow-hidden carousel-row">
+        <div
+          class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10
+                    bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none"
+        >
+        </div>
+        <div
+          class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10
+                    bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none"
+        >
+        </div>
+
+        <div class="flex gap-4 md:gap-5 animate-scroll-left">
+          {
+            TRACK2.map((t) => (
+              <div
+                class="testimonial-mini flex-shrink-0 w-[300px] sm:w-[330px] md:w-[360px]
+                        bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg rounded-2xl p-5 md:p-6
+                        border border-slate-200 dark:border-slate-800"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <div
+                    class:list={[
+                      "w-11 h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br flex items-center justify-center",
+                      "text-white font-bold text-base md:text-lg flex-shrink-0 shadow-md",
+                      t.gradient,
+                    ]}
+                  >
+                    {t.initial}
+                  </div>
+                  <div>
+                    <p class="font-bold text-slate-900 dark:text-white text-sm md:text-base leading-tight">
+                      {t.name}
+                    </p>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">
+                      {t.handle}
+                    </p>
+                  </div>
+                  <span class="material-icons-round text-blue-600 text-base ml-auto flex-shrink-0">
+                    verified
+                  </span>
+                </div>
+                <p class="text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                  {t.text}
+                </p>
+                <div class="flex gap-0.5">
+                  {Array.from({ length: t.stars }).map(() => (
+                    <span class="material-icons-round text-yellow-400 text-sm md:text-base">
+                      star
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Estadísticas con contador animado ── -->
+    <div
+      class="pt-10 md:pt-14 border-t border-slate-200 dark:border-slate-800 max-w-5xl mx-auto px-4 sm:px-6"
+    >
+      <div
+        id="stats-grid"
+        class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center"
+      >
+        {
+          STATS.map((stat) => (
+            <div class="stat-item opacity-0 fade-up group cursor-default">
+              <div class="relative inline-flex items-end justify-center gap-1">
+                <span
+                  class="stat-number text-4xl sm:text-5xl md:text-6xl font-black text-blue-600"
+                  data-target={stat.target}
+                  data-suffix={stat.suffix}
+                  data-float={stat.float ? "true" : "false"}
+                  data-static={stat.static ? stat.staticVal : undefined}
+                >
+                  {stat.static ? stat.staticVal : "0"}
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-400 font-semibold mt-2">
+                {stat.label}
+              </p>
+              {stat.stars && (
+                <div class="flex justify-center gap-0.5 mt-2">
+                  <span class="material-icons-round text-yellow-400 text-sm sm:text-base">
+                    star
+                  </span>
+                  <span class="material-icons-round text-yellow-400 text-sm sm:text-base">
+                    star
+                  </span>
+                  <span class="material-icons-round text-yellow-400 text-sm sm:text-base">
+                    star
+                  </span>
+                  <span class="material-icons-round text-yellow-400 text-sm sm:text-base">
+                    star
+                  </span>
+                  <span class="material-icons-round text-yellow-400 text-sm sm:text-base">
+                    star_half
+                  </span>
+                </div>
+              )}
+              <div
+                class="mt-3 h-1 w-12 bg-blue-400/30 rounded-full mx-auto
+                        group-hover:w-20 group-hover:bg-blue-400 transition-all duration-500"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+  JAVASCRIPT (solo lógica runtime: contador + observer)
+  Los datos y el HTML ya fueron generados en build time.
+════════════════════════════════════════════════════ -->
+<script>
+  "use strict";
+
+  /* ── Contador animado ── */
+  function easeOutQuart(t: number): number {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animateCount(el: HTMLElement): void {
+    if (el.dataset.static) return;
+
+    const isFloat = el.dataset.float === "true";
+    const target = parseFloat(el.dataset.target ?? "0");
+    const suffix = el.dataset.suffix ?? "";
+    const duration = 2000;
+    const start = performance.now();
+
+    el.classList.add("counting");
+
+    function step(now: number): void {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = easeOutQuart(progress);
+      const current = isFloat
+        ? (eased * target).toFixed(1)
+        : Math.floor(eased * target).toLocaleString();
+
+      el.textContent = current + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent =
+          (isFloat ? target.toFixed(1) : target.toLocaleString()) + suffix;
+        el.classList.remove("counting");
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function activateStats(): void {
+    document.querySelectorAll<HTMLElement>(".stat-item").forEach((item, i) => {
+      item.style.opacity = "";
+      item.classList.add("fade-up");
+
+      setTimeout(() => {
+        const el = item.querySelector<HTMLElement>(".stat-number");
+        if (el) animateCount(el);
+      }, i * 150);
+    });
+  }
+
+  /* ── IntersectionObserver: anima solo cuando es visible ── */
+  const statsGrid = document.getElementById("stats-grid");
+  let animated = false;
+
+  if (statsGrid) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animated) {
+            animated = true;
+            activateStats();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(statsGrid);
+  }
+</script>

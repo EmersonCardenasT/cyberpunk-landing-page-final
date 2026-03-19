@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import 'aos/dist/aos.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <!-- FUENTE DE LA PAGINA -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- PARA LOS ICONOSS -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script type="module" src="/src/scripts/aos.js"></script>
+  </head>
+  <body  class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-colors duration-300">
+
+    <slot />
+
+    <script>
+      const btn = document.getElementById("theme-toggle");
+
+      btn?.addEventListener("click", () => {
+        const html = document.documentElement;
+
+        html.classList.toggle("dark");
+
+        // Guardar preferencia
+        if (html.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      });
+
+      // Cargar tema guardado
+      const savedTheme = localStorage.getItem("theme");
+
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+	
+  </body>
+</html>
+
+<style>
+  body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+
+    .glass-effect {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+</style>
