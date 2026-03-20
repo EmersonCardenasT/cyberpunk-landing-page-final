@@ -12,7 +12,7 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
     style={`background-image: url(${FondoCyberpunk.src});`}
   >
   </div>
-  |
+
   <!-- Overlay con gradiente -->
   <div
     class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/85 to-black/95"
@@ -33,23 +33,24 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
   <!-- Contenido principal -->
   <div class="relative z-10">
     <div class="max-w-7xl mx-auto">
-      <!-- Sección principal con grid -->
-      <div class="grid md:grid-cols-12 gap-12 mb-16">
-        <!-- Brand & Description -->
+      <!-- Sección principal con grid MEJORADO -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
+        
+        <!-- Brand & Description - FULL WIDTH en mobile -->
         <div
           data-aos="fade-up"
           data-aos-duration="1000"
-          class="col-span-12 md:col-span-4"
+          class="col-span-1 sm:col-span-2 lg:col-span-4"
         >
           <!-- Logo -->
           <div class="flex items-center gap-3 mb-6 group cursor-pointer">
             <img
               src={logoCyberpunk.src}
               alt="Cyberpunk Store"
-              class="h-12 w-auto group-hover:scale-110 transition-transform"
+              class="h-10 sm:h-12 w-auto group-hover:scale-110 transition-transform"
             />
             <div>
-              <span class="text-2xl font-bold tracking-tight block"
+              <span class="text-xl sm:text-2xl font-bold tracking-tight block"
                 >Cyberpunk</span
               >
               <span class="text-xs text-blue-500 font-semibold">Tech Store</span>
@@ -89,8 +90,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               <a
                 href="https://facebook.com"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all hover:scale-110"
+                aria-label="Facebook"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -102,8 +104,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               <a
                 href="https://instagram.com"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 hover:border-pink-600 transition-all hover:scale-110"
+                aria-label="Instagram"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -115,8 +118,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               <a
                 href="https://wa.me/51927854195"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-600 hover:border-green-600 transition-all hover:scale-110"
+                aria-label="WhatsApp"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -128,8 +132,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               <a
                 href="https://tiktok.com"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black hover:border-white transition-all hover:scale-110"
+                aria-label="TikTok"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -146,13 +151,13 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="100"
-          class="col-span-6 md:col-span-2"
+          class="col-span-1 sm:col-span-1 lg:col-span-2"
         >
-          <h6 class="font-bold text-lg mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500">storefront</span>
+          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+            <span class="material-icons-round text-blue-500 text-xl">storefront</span>
             Tienda
           </h6>
-          <ul class="space-y-3 text-slate-300 text-sm">
+          <ul class="space-y-2 sm:space-y-3 text-slate-300 text-sm">
             <li>
               <a
                 class="hover:text-blue-500 transition-colors flex items-center gap-2 group"
@@ -221,13 +226,13 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="200"
-          class="col-span-6 md:col-span-2"
+          class="col-span-1 sm:col-span-1 lg:col-span-2"
         >
-          <h6 class="font-bold text-lg mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500">build</span>
+          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+            <span class="material-icons-round text-blue-500 text-xl">build</span>
             Servicios
           </h6>
-          <ul class="space-y-3 text-slate-300 text-sm">
+          <ul class="space-y-2 sm:space-y-3 text-slate-300 text-sm">
             <li>
               <a
                 class="hover:text-blue-500 transition-colors flex items-center gap-2 group"
@@ -252,7 +257,6 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
                 Cambio de Batería
               </a>
             </li>
-            
             <li>
               <a
                 class="hover:text-blue-500 transition-colors flex items-center gap-2 group"
@@ -285,13 +289,13 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="300"
-          class="col-span-6 md:col-span-2"
+          class="col-span-1 sm:col-span-1 lg:col-span-2"
         >
-          <h6 class="font-bold text-lg mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500">business</span>
+          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+            <span class="material-icons-round text-blue-500 text-xl">business</span>
             Empresa
           </h6>
-          <ul class="space-y-3 text-slate-300 text-sm">
+          <ul class="space-y-2 sm:space-y-3 text-slate-300 text-sm">
             <li>
               <a
                 class="hover:text-blue-500 transition-colors flex items-center gap-2 group"
@@ -328,7 +332,6 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
                 Galería
               </a>
             </li>
-            
             <li>
               <a
                 class="hover:text-blue-500 transition-colors flex items-center gap-2 group"
@@ -344,30 +347,33 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           </ul>
         </div>
 
-        <!-- Columna 4: Contacto -->
+        <!-- Columna 4: Contacto - MEJORADO para mobile -->
         <div
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="400"
-          class="col-span-12 md:col-span-2"
+          class="col-span-1 sm:col-span-2 lg:col-span-2"
         >
-          <h6 class="font-bold text-lg mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500"
+          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+            <span class="material-icons-round text-blue-500 text-xl"
               >contact_support</span
             >
             Contacto
           </h6>
-          <ul class="space-y-4 text-slate-300 text-sm">
+          <ul class="space-y-3 sm:space-y-4 text-slate-300 text-sm">
             <li class="flex items-start gap-3">
               <span
-                class="material-icons-round text-blue-500 text-xl flex-shrink-0"
+                class="material-icons-round text-blue-500 text-xl flex-shrink-0 mt-0.5"
                 >location_on</span
               >
-              <span>Av. Micaela Bastidas con Jr. 9 Diciembre N° 195 (Misma Esquina)</span>
+              <span class="break-words leading-relaxed">
+                Av. Micaela Bastidas con Jr. 9 Diciembre N° 195<br class="hidden sm:inline">
+                <span class="block sm:inline">(Misma Esquina)</span>
+              </span>
             </li>
             <li class="flex items-start gap-3">
               <span
-                class="material-icons-round text-blue-500 text-xl flex-shrink-0"
+                class="material-icons-round text-blue-500 text-xl flex-shrink-0 mt-0.5"
                 >phone</span
               >
               <div>
@@ -380,22 +386,22 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
             </li>
             <li class="flex items-start gap-3">
               <span
-                class="material-icons-round text-blue-500 text-xl flex-shrink-0"
+                class="material-icons-round text-blue-500 text-xl flex-shrink-0 mt-0.5"
                 >email</span
               >
               <a
                 href="mailto:contacto@cyberpunk.com"
-                class="hover:text-blue-500 transition-colors"
-                >cyberpunkcompany@gmail.com</a
+                class="hover:text-blue-500 transition-colors break-all"
+                >cyberpunkcompany@<wbr>gmail.com</a
               >
             </li>
             <li class="flex items-start gap-3">
               <span
-                class="material-icons-round text-blue-500 text-xl flex-shrink-0"
+                class="material-icons-round text-blue-500 text-xl flex-shrink-0 mt-0.5"
                 >schedule</span
               >
               <div>
-                <p>Lun - Dom: 8:00 AM - 9:00 PM</p>
+                <p>Lun - Dom:<br class="sm:hidden"> 8:00 AM - 9:00 PM</p>
               </div>
             </li>
           </ul>
@@ -412,62 +418,48 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           <p class="text-sm font-semibold text-slate-300 mb-4">
             Métodos de Pago Aceptados
           </p>
-          <div class="flex flex-wrap justify-center items-center gap-6">
+          <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             <div
-              class="w-16 h-10 bg-white rounded-lg flex items-center justify-center"
+              class="w-14 h-9 sm:w-16 sm:h-10 bg-white rounded-lg flex items-center justify-center"
             >
               <span class="text-blue-600 font-bold text-xs">VISA</span>
             </div>
             <div
-              class="w-16 h-10 bg-white rounded-lg flex items-center justify-center"
+              class="w-14 h-9 sm:w-16 sm:h-10 bg-white rounded-lg flex items-center justify-center"
             >
               <span class="text-red-600 font-bold text-xs">Master</span>
             </div>
             <div
-              class="w-16 h-10 bg-white rounded-lg flex items-center justify-center p-2"
-            >
-              <svg viewBox="0 0 24 24" class="w-full h-full" fill="#003087">
-                <path
-                  d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"
-                ></path>
-              </svg>
-            </div>
-            <div
-              class="w-16 h-10 bg-white rounded-lg flex items-center justify-center"
+              class="w-14 h-9 sm:w-16 sm:h-10 bg-white rounded-lg flex items-center justify-center"
             >
               <span class="text-blue-800 font-bold text-xs">Yape</span>
             </div>
             <div
-              class="w-16 h-10 bg-white rounded-lg flex items-center justify-center"
+              class="w-14 h-9 sm:w-16 sm:h-10 bg-white rounded-lg flex items-center justify-center"
             >
               <span class="text-purple-800 font-bold text-xs">Plin</span>
-            </div>
-            <div
-              class="w-16 h-10 bg-white rounded-lg flex items-center justify-center"
-            >
-              <span class="text-green-600 font-bold text-2xl">$</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Bottom copyright -->
+      <!-- Bottom copyright - MEJORADO -->
       <div
-        class="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400"
+        class="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-xs text-slate-400"
       >
-        <div class="flex flex-col md:flex-row items-center gap-4">
+        <div class="flex flex-col md:flex-row items-center gap-2 sm:gap-4 text-center md:text-left">
           <p>© 2026 Cyberpunk Tech Store. Todos los derechos reservados.</p>
           <span class="hidden md:block">|</span>
-          <p>
+          <p class="flex items-center gap-1 flex-wrap justify-center">
             Desarrollado con <i class="fa fa-heart" aria-hidden="true"></i> por <a
               href="#"
-              class="text-blue-500 hover:text-blue-400 transition-colors font-semibold"
+              class="text-blue-500 hover:text-blue-400 transition-colors font-semibold ml-1"
               >PXCode Software Solutions</a
             >
           </p>
         </div>
 
-        <div class="flex flex-wrap gap-6">
+        <div class="flex flex-wrap gap-4 sm:gap-6 justify-center">
           <a
             class="hover:text-blue-500 transition-colors flex items-center gap-1"
             href="#"
@@ -513,6 +505,11 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
     footer .bg-fixed {
       background-attachment: fixed;
     }
+  }
+
+  /* Breakpoint de palabra para emails largos */
+  a[href^="mailto:"] {
+    word-break: break-all;
   }
 
   /* Animación de entrada para el scroll to top */

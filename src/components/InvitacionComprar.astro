@@ -9,13 +9,13 @@ import LogoOneplus from "../assets/img/svg_logo_oneplus.svg";
 
 // Datos centralizados — añade o quita marcas aquí
 const BRANDS = [
-  { src: LogoApple.src,   alt: "Apple",    label: "Apple",    color: "#555555" },
-  { src: LogoSamsung.src, alt: "Samsung",  label: "Samsung",  color: "#1428A0" },
-  { src: LogoXiaomi.src,  alt: "Xiaomi",   label: "Xiaomi",   color: "#FF6900" },
-  { src: LogoHuawei.src,  alt: "Huawei",   label: "Huawei",   color: "#CF0A2C" },
-  { src: LogoMoto.src,    alt: "Motorola", label: "Motorola", color: "#0053A0" },
-  { src: LogoVivo.src,    alt: "Vivo",     label: "Vivo",     color: "#415FFF" },
-  { src: LogoOneplus.src, alt: "OnePlus",  label: "OnePlus",  color: "#F5010C" },
+  { src: LogoApple.src, alt: "Apple", label: "Apple", color: "#555555" },
+  { src: LogoSamsung.src, alt: "Samsung", label: "Samsung", color: "#1428A0" },
+  { src: LogoXiaomi.src, alt: "Xiaomi", label: "Xiaomi", color: "#FF6900" },
+  { src: LogoHuawei.src, alt: "Huawei", label: "Huawei", color: "#CF0A2C" },
+  { src: LogoMoto.src, alt: "Motorola", label: "Motorola", color: "#0053A0" },
+  { src: LogoVivo.src, alt: "Vivo", label: "Vivo", color: "#415FFF" },
+  { src: LogoOneplus.src, alt: "OnePlus", label: "OnePlus", color: "#F5010C" },
 ];
 
 // Triplicamos para garantizar loop sin cortes visibles
@@ -25,8 +25,12 @@ const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
 <style>
   /* ── Carrusel scroll continuo ── */
   @keyframes brands-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(calc(-100% / 3)); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% / 3));
+    }
   }
 
   .brands-track {
@@ -54,10 +58,10 @@ const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
     backdrop-filter: blur(8px);
     cursor: default;
     transition:
-      background   0.35s ease,
+      background 0.35s ease,
       border-color 0.35s ease,
-      transform    0.35s ease,
-      box-shadow   0.35s ease;
+      transform 0.35s ease,
+      box-shadow 0.35s ease;
     flex-shrink: 0;
   }
 
@@ -77,7 +81,9 @@ const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
     height: 40px;
     object-fit: contain;
     filter: grayscale(1) opacity(0.45);
-    transition: filter 0.35s ease, transform 0.35s ease;
+    transition:
+      filter 0.35s ease,
+      transform 0.35s ease;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
@@ -123,23 +129,31 @@ const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
   }
 
   /* Dark mode masks */
-  :global(.dark) .brands-mask-left  { background: linear-gradient(to right,  rgb(2 6 23), transparent); }
-  :global(.dark) .brands-mask-right { background: linear-gradient(to left, rgb(2 6 23), transparent); }
+  :global(.dark) .brands-mask-left {
+    background: linear-gradient(to right, rgb(2 6 23), transparent);
+  }
+  :global(.dark) .brands-mask-right {
+    background: linear-gradient(to left, rgb(2 6 23), transparent);
+  }
 </style>
 
 <!-- ════════════════════════════════════════════════════
   SECCIÓN CTA + CARRUSEL DE MARCAS
 ════════════════════════════════════════════════════ -->
 <section class="py-24 px-6 relative overflow-hidden">
-
   <!-- CTA -->
   <div class="max-w-4xl mx-auto text-center relative z-10">
-    <h2 class="text-4xl md:text-5xl font-extrabold mb-8
-               bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
+    <h2
+      class="text-4xl md:text-5xl font-extrabold mb-8
+               bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent"
+    >
       ¿LISTO PARA ACTUALIZAR TU MUNDO?
     </h2>
-    <p class="text-slate-600 dark:text-slate-400 mb-10 text-lg max-w-2xl mx-auto">
-      Únete hoy a los miles que ya están moldeando el futuro con tecnología Cyberpunk.
+    <p
+      class="text-slate-600 dark:text-slate-400 mb-10 text-lg max-w-2xl mx-auto"
+    >
+      Únete hoy a los miles que ya están moldeando el futuro con tecnología
+      Cyberpunk.
     </p>
     <a
       href="https://wa.me/51927854195?text=Hola%20¡Me%20interesa%20comprar%20un%20celular%20en%20Cyberpunk!"
@@ -154,28 +168,44 @@ const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
   </div>
 
   <!-- Fondo decorativo -->
-  <div class="absolute inset-0 bg-gradient-to-b from-blue-600/5 via-blue-500/10 to-transparent
-              dark:from-blue-400/10 dark:via-blue-500/20 blur-[120px] pointer-events-none"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-blue-600/5 via-blue-500/10 to-transparent
+              dark:from-blue-400/10 dark:via-blue-500/20 blur-[120px] pointer-events-none"
+  >
+  </div>
 
   <!-- ── Separador ── -->
-  <div class="mt-20 mb-10 flex items-center justify-center gap-3 max-w-xs mx-auto">
-    <div class="h-px flex-1 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-700"></div>
-    <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-slate-400 dark:text-slate-500">
+  <div
+    class="mt-20 mb-10 flex items-center justify-center gap-3 max-w-xs mx-auto"
+  >
+    <div
+      class="h-px flex-1 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-700"
+    >
+    </div>
+    <span
+      class="text-[10px] font-bold tracking-[0.25em] uppercase text-slate-400 dark:text-slate-500"
+    >
       Marcas oficiales
     </span>
-    <div class="h-px flex-1 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-700"></div>
+    <div
+      class="h-px flex-1 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-700"
+    >
+    </div>
   </div>
 
   <!-- ── Carrusel infinito ── -->
-  <div class="brands-wrapper relative -mx-6 overflow-hidden">
+<div class="brands-wrapper relative -mx-6 overflow-hidden">
+  <div class="brands-mask-left" aria-hidden="true"></div>
+  <div class="brands-mask-right" aria-hidden="true"></div>
 
-    <div class="brands-mask-left"  aria-hidden="true"></div>
-    <div class="brands-mask-right" aria-hidden="true"></div>
-
-    <div class="brands-track flex items-center gap-4 py-4 px-6" aria-label="Marcas asociadas">
-      {TRACK.map((brand, i) => (
+  <div
+    class="brands-track flex items-center gap-2 sm:gap-4 py-3 sm:py-4 px-6"
+    aria-label="Marcas asociadas"
+  >
+    {
+      TRACK.map((brand, i) => (
         <div
-          class="brand-card"
+          class="brand-card px-1.5 py-1 sm:px-4 sm:py-2"
           style={`--brand-color: ${brand.color};`}
           role="img"
           aria-label={brand.alt}
@@ -184,16 +214,16 @@ const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
           <img
             src={brand.src}
             alt={brand.alt}
-            width="64"
-            height="40"
+            class="w-8 h-6 sm:w-16 sm:h-10"
             loading="lazy"
             decoding="async"
             draggable="false"
           />
-          <span>{brand.label}</span>
-        </div>
-      ))}
-    </div>
-  </div>
 
+          <span class="text-[10px] sm:text-sm">{brand.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>
 </section>

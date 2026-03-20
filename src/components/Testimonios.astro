@@ -293,125 +293,151 @@ const STATS = [
     </div>
 
     <!-- ── Carruseles ── -->
-    <div class="space-y-5 md:space-y-6 mb-16 md:mb-20">
-      <!-- FILA 1 — se mueve hacia la derecha -->
-      <div class="relative overflow-hidden carousel-row">
-        <div
-          class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10
-                    bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none"
-        >
-        </div>
-        <div
-          class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10
-                    bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none"
-        >
-        </div>
+<div class="space-y-4 sm:space-y-5 md:space-y-6 mb-12 sm:mb-16 md:mb-20">
 
-        <div class="flex gap-4 md:gap-5 animate-scroll-right">
-          {
-            TRACK1.map((t) => (
-              <div
-                class="testimonial-mini flex-shrink-0 w-[300px] sm:w-[330px] md:w-[360px]
-                        bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg rounded-2xl p-5 md:p-6
-                        border border-slate-200 dark:border-slate-800"
-              >
-                <div class="flex items-center gap-3 mb-4">
-                  <div
-                    class:list={[
-                      "w-11 h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br flex items-center justify-center",
-                      "text-white font-bold text-base md:text-lg flex-shrink-0 shadow-md",
-                      t.gradient,
-                    ]}
-                  >
-                    {t.initial}
-                  </div>
-                  <div>
-                    <p class="font-bold text-slate-900 dark:text-white text-sm md:text-base leading-tight">
-                      {t.name}
-                    </p>
-                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">
-                      {t.handle}
-                    </p>
-                  </div>
-                  <span class="material-icons-round text-blue-600 text-base ml-auto flex-shrink-0">
-                    verified
-                  </span>
-                </div>
-                <p class="text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-4">
-                  {t.text}
-                </p>
-                <div class="flex gap-0.5">
-                  {Array.from({ length: t.stars }).map(() => (
-                    <span class="material-icons-round text-yellow-400 text-sm md:text-base">
-                      star
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+  <!-- FILA 1 -->
+  <div class="relative overflow-hidden carousel-row">
 
-      <!-- FILA 2 — se mueve hacia la izquierda -->
-      <div class="relative overflow-hidden carousel-row">
-        <div
-          class="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10
-                    bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none"
-        >
-        </div>
-        <div
-          class="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10
-                    bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none"
-        >
-        </div>
+    <!-- Gradientes -->
+    <div class="absolute left-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-10
+                bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none"></div>
 
-        <div class="flex gap-4 md:gap-5 animate-scroll-left">
-          {
-            TRACK2.map((t) => (
-              <div
-                class="testimonial-mini flex-shrink-0 w-[300px] sm:w-[330px] md:w-[360px]
-                        bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg rounded-2xl p-5 md:p-6
-                        border border-slate-200 dark:border-slate-800"
-              >
-                <div class="flex items-center gap-3 mb-4">
-                  <div
-                    class:list={[
-                      "w-11 h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br flex items-center justify-center",
-                      "text-white font-bold text-base md:text-lg flex-shrink-0 shadow-md",
-                      t.gradient,
-                    ]}
-                  >
-                    {t.initial}
-                  </div>
-                  <div>
-                    <p class="font-bold text-slate-900 dark:text-white text-sm md:text-base leading-tight">
-                      {t.name}
-                    </p>
-                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">
-                      {t.handle}
-                    </p>
-                  </div>
-                  <span class="material-icons-round text-blue-600 text-base ml-auto flex-shrink-0">
-                    verified
-                  </span>
-                </div>
-                <p class="text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-4">
-                  {t.text}
-                </p>
-                <div class="flex gap-0.5">
-                  {Array.from({ length: t.stars }).map(() => (
-                    <span class="material-icons-round text-yellow-400 text-sm md:text-base">
-                      star
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))
-          }
+    <div class="absolute right-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-10
+                bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none"></div>
+
+    <!-- Track -->
+    <div class="flex gap-2 sm:gap-4 md:gap-5 animate-scroll-right">
+
+      {TRACK1.map((t) => (
+        <div
+          class="testimonial-mini flex-shrink-0 
+                 w-[240px] sm:w-[300px] md:w-[360px]
+                 bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg 
+                 rounded-2xl p-4 sm:p-5 md:p-6
+                 border border-slate-200 dark:border-slate-800
+                 scale-[0.95] sm:scale-100"
+        >
+          <!-- Header -->
+          <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+
+            <!-- Avatar -->
+            <div
+              class:list={[
+                "w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br flex items-center justify-center",
+                "text-white font-bold text-sm sm:text-base md:text-lg flex-shrink-0 shadow-md",
+                t.gradient,
+              ]}
+            >
+              {t.initial}
+            </div>
+
+            <!-- Info -->
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm md:text-base leading-tight">
+                {t.name}
+              </p>
+              <p class="text-[10px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-400">
+                {t.handle}
+              </p>
+            </div>
+
+            <!-- Icon -->
+            <span class="material-icons-round text-blue-600 text-sm sm:text-base ml-auto flex-shrink-0">
+              verified
+            </span>
+          </div>
+
+          <!-- Texto -->
+          <p class="text-slate-700 dark:text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4">
+            {t.text}
+          </p>
+
+          <!-- Stars -->
+          <div class="flex gap-0.5">
+            {Array.from({ length: t.stars }).map(() => (
+              <span class="material-icons-round text-yellow-400 text-xs sm:text-sm md:text-base">
+                star
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      ))}
+
     </div>
+  </div>
+
+  <!-- FILA 2 -->
+  <div class="relative overflow-hidden carousel-row">
+
+    <!-- Gradientes -->
+    <div class="absolute left-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-10
+                bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none"></div>
+
+    <div class="absolute right-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-10
+                bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none"></div>
+
+    <!-- Track -->
+    <div class="flex gap-2 sm:gap-4 md:gap-5 animate-scroll-left">
+
+      {TRACK2.map((t) => (
+        <div
+          class="testimonial-mini flex-shrink-0 
+                 w-[240px] sm:w-[300px] md:w-[360px]
+                 bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg 
+                 rounded-2xl p-4 sm:p-5 md:p-6
+                 border border-slate-200 dark:border-slate-800
+                 scale-[0.95] sm:scale-100"
+        >
+          <!-- Header -->
+          <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+
+            <!-- Avatar -->
+            <div
+              class:list={[
+                "w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br flex items-center justify-center",
+                "text-white font-bold text-sm sm:text-base md:text-lg flex-shrink-0 shadow-md",
+                t.gradient,
+              ]}
+            >
+              {t.initial}
+            </div>
+
+            <!-- Info -->
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm md:text-base leading-tight">
+                {t.name}
+              </p>
+              <p class="text-[10px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-400">
+                {t.handle}
+              </p>
+            </div>
+
+            <!-- Icon -->
+            <span class="material-icons-round text-blue-600 text-sm sm:text-base ml-auto flex-shrink-0">
+              verified
+            </span>
+          </div>
+
+          <!-- Texto -->
+          <p class="text-slate-700 dark:text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4">
+            {t.text}
+          </p>
+
+          <!-- Stars -->
+          <div class="flex gap-0.5">
+            {Array.from({ length: t.stars }).map(() => (
+              <span class="material-icons-round text-yellow-400 text-xs sm:text-sm md:text-base">
+                star
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+
+</div>
 
     <!-- ── Estadísticas con contador animado ── -->
     <div
