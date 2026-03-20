@@ -1,24 +1,151 @@
 ---
 import "../styles/global.css";
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
+
+// Props para SEO dinámico
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Cyberpunk Store Perú - Venta y Reparación de Celulares | Servicio Express",
+  description = "Venta de celulares nuevos y seminuevos con garantía. Reparación express de pantallas, baterías y más. Servicio en 30 minutos. iPhone, Samsung y todas las marcas. ¡Cotiza ahora!",
+  image = "/banner_prod_completos.png", // Crea esta imagen 1200x630px
+  canonical,  
+  noindex = false,
+} = Astro.props;
+
+// URL base del sitio
+const siteURL = Astro.site || "https://cyberpunkpe.com"; // Cambia por tu dominio real
+const currentURL = canonical || new URL(Astro.url.pathname, siteURL).href;
+const ogImage = new URL(image, siteURL).href;
+
+// Datos estructurados JSON-LD para SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Cyberpunk Store Perú",
+  description: description,
+  url: siteURL,
+  telephone: "+51927854195",
+  priceRange: "$$",
+  image: ogImage,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "PE",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -12.0464,
+    longitude: -77.0428,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "10:00",
+      closes: "18:00",
+    },
+  ],
+  sameAs: ["https://wa.me/51927854195"],
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- META TAGS BÁSICOS -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
-    <!-- FUENTE DE LA PAGINA -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
-      rel="stylesheet"
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SEO PRINCIPAL -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="venta celulares, reparación celulares, iPhone, Samsung, pantallas, baterías, servicio express, celulares nuevos, celulares seminuevos, garantía, financiamiento, Perú"
+    />
+    <meta name="author" content="Cyberpunk Store" />
+    <link rel="canonical" href={currentURL} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {
+      !noindex && (
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+      )
+    }
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cyberpunk Store" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={currentURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Cyberpunk Store - Venta y Reparación de Celulares"
     />
 
-    <!-- PARA LOS ICONOSS -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- TWITTER CARD -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta
+      name="twitter:image:alt"
+      content="Cyberpunk Store - Venta y Reparación de Celulares"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- FAVICONS E ICONOS -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/svg+xml" href="/logo_cyberpunk.svg" />
+    <link rel="icon" type="image/x-icon" href="/logo_cyberpunk.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- PRECONNECT & PRELOAD PARA PERFORMANCE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- FUENTES -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
       rel="stylesheet"
@@ -26,55 +153,206 @@ import 'aos/dist/aos.css';
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
 
-    <script type="module" src="/src/scripts/aos.js"></script>
-  </head>
-  <body  class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-colors duration-300">
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DATOS ESTRUCTURADOS JSON-LD -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SEGURIDAD & PRIVACIDAD -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+  </head>
+
+  <body
+    class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-colors duration-300"
+  >
     <slot />
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SCRIPTS -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Inicialización de AOS -->
+    <script>
+      import AOS from "aos";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        AOS.init({
+          duration: 800,
+          once: false,
+          easing: "ease-out-quad",
+          offset: 100,
+          delay: 0,
+          anchorPlacement: "top-bottom",
+          disable: false,
+          startEvent: "DOMContentLoaded",
+          initClassName: "aos-init",
+          animatedClassName: "aos-animate",
+          useClassNames: false,
+          disableMutationObserver: false,
+          debounceDelay: 50,
+          throttleDelay: 99,
+        });
+      });
+
+      // Refrescar AOS en navegación
+      document.addEventListener("astro:page-load", () => {
+        AOS.refresh();
+      });
+    </script>
+
+    <!-- Theme Toggle con mejoras -->
+    <script is:inline>
+      // Ejecutar inmediatamente para evitar flash
+      (function () {
+        const getThemePreference = () => {
+          const stored = localStorage.getItem("theme");
+          if (stored) return stored;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        };
+
+        const theme = getThemePreference();
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
 
     <script>
       const btn = document.getElementById("theme-toggle");
 
       btn?.addEventListener("click", () => {
         const html = document.documentElement;
-
         html.classList.toggle("dark");
 
-        // Guardar preferencia
-        if (html.classList.contains("dark")) {
-          localStorage.setItem("theme", "dark");
-        } else {
-          localStorage.setItem("theme", "light");
+        const isDark = html.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+
+        // Actualizar color del theme para navegadores móviles
+        const metaThemeColor = document.querySelector(
+          'meta[name="theme-color"]',
+        );
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute(
+            "content",
+            isDark ? "#0f172a" : "#2563eb",
+          );
         }
       });
 
-      // Cargar tema guardado
-      const savedTheme = localStorage.getItem("theme");
-
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      }
+      // Detectar cambios en preferencia del sistema
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (!localStorage.getItem("theme")) {
+            const html = document.documentElement;
+            if (e.matches) {
+              html.classList.add("dark");
+            } else {
+              html.classList.remove("dark");
+            }
+          }
+        });
     </script>
-	
   </body>
 </html>
 
-<style>
+<style is:global>
+  /* ═══════════════════════════════════════════════════════════ */
+  /* ESTILOS GLOBALES */
+  /* ═══════════════════════════════════════════════════════════ */
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-      font-family: 'Inter', sans-serif;
-      transition: background-color 0.3s ease;
-    }
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      sans-serif;
+    transition: background-color 0.3s ease;
+  }
 
-    .glass-effect {
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+  /* Glass effect mejorado */
+  .glass-effect {
+    backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
 
-    .dark .glass-effect {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
+  .dark .glass-effect {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Shadow glow effect */
+  .shadow-glow {
+    box-shadow:
+      0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .shadow-glow {
+    box-shadow:
+      0 0 20px rgba(59, 130, 246, 0.4),
+      0 0 40px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+  }
+
+  /* Selección de texto */
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.3);
+    color: inherit;
+  }
+
+  /* Loading optimizations */
+  img {
+    content-visibility: auto;
+  }
 </style>
