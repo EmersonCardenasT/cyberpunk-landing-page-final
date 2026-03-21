@@ -1,7 +1,7 @@
 ---
 import { TypingAnimation } from "@/components/ui/typing-animation";
-import bannerProductoBlanco from "../assets/img/banner_productos_blanco.png";
-import bannerProductoAzul from "../assets/img/banner_productos_azul.png";
+import bannerProductoBlanco from "../assets/img/banner_productos_blanco.webp";
+import bannerProductoAzul from "../assets/img/banner_productos_azul.webp";
 
 const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
 ---
@@ -170,36 +170,38 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
       </div>
 
       <!-- Botones de acción -->
-      <div
-        data-aos="fade-right"
-        data-aos-delay="600"
-        data-aos-duration="1000"
-        class="flex flex-wrap gap-4"
-      >
-        <a
-  href="#products"
-  class="group relative bg-blue-600 text-white px-4 py-2 sm:px-8 sm:py-4 rounded-full text-xs sm:text-base font-bold shadow-glow transition-all hover:scale-105 overflow-hidden"
+<div
+  data-aos="fade-right"
+  data-aos-delay="600"
+  data-aos-duration="1000"
+  class="flex flex-row sm:flex-wrap gap-2 sm:gap-4"
 >
-          <span class="relative z-10 flex items-center gap-2">
-            <span class="material-icons-round text-base sm:text-xl">shopping_cart</span>
-            COMPRAR CELULAR
-          </span>
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-          </div>
-        </a>
 
-        <a
-  href="#reparacion"
-  class="group relative px-4 py-2 sm:px-8 sm:py-4 rounded-full text-xs sm:text-base font-bold border-2 border-blue-600 text-blue-500 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 overflow-hidden"
->
-          <span class="relative z-10 flex items-center gap-2">
-            <span class="material-icons-round text-base sm:text-xl">build</span>
-            REPARAR MI EQUIPO
-          </span>
-        </a>
-      </div>
+  <!-- Botón 1 -->
+  <a
+    href="#products"
+    class="w-1/2 sm:w-auto group relative bg-blue-600 text-white px-3 py-2 sm:px-8 sm:py-4 rounded-full text-[11px] sm:text-base font-bold shadow-glow transition-all hover:scale-105 overflow-hidden text-center"
+  >
+    <span class="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
+      <i class="fa-solid fa-cart-shopping text-sm sm:text-xl"></i>
+      COMPRAR
+    </span>
+
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </a>
+
+  <!-- Botón 2 -->
+  <a
+    href="#reparacion"
+    class="w-1/2 sm:w-auto group relative px-3 py-2 sm:px-8 sm:py-4 rounded-full text-[11px] sm:text-base font-bold border-2 border-blue-600 text-blue-500 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 overflow-hidden text-center"
+  >
+    <span class="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
+      <i class="fa-solid fa-wrench text-sm sm:text-xl"></i>
+      REPARAR
+    </span>
+  </a>
+
+</div>
 
       <!-- Stats -->
       <div
@@ -247,7 +249,7 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
               class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center"
             >
               <span class="material-icons-round text-green-500 text-2xl"
-                >check_circle</span
+                ><i class="fa-solid fa-circle-check"></i></span
               >
             </div>
             <div>
@@ -265,7 +267,7 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
               class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center"
             >
               <span class="material-icons-round text-blue-500 text-2xl"
-                >local_offer</span
+                ><i class="fa-solid fa-shop"></i></span
               >
             </div>
             <div>
@@ -283,6 +285,7 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
           alt="Productos Cyberpunk"
           fetchpriority="high"
           decoding="async"
+          loading="lazy"
           class="hero-image hidden dark:block relative z-10 drop-shadow-2xl"
         />
 
@@ -293,6 +296,7 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
           alt="Productos Cyberpunk"
           fetchpriority="high"
           decoding="async"
+          loading="lazy"
           class="hero-image block dark:hidden relative z-10 drop-shadow-2xl"
         />
       </div>

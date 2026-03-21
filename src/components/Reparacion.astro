@@ -1,5 +1,5 @@
 ---
-    import reparacionCelular from "../assets/img/servicio_tecnico.jpg"
+    import reparacionCelular from "../assets/img/servicio_tecnico.webp"
 ---
 <!-- REPARACION DE CELULARES  -->
   <section id="reparacion" class="py-20 px-6 relative overflow-hidden">
@@ -28,7 +28,8 @@
 
           <div
             class="relative aspect-square w-full max-w-xl rounded-3xl overflow-hidden bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 shadow-2xl transition-all duration-700 group/img border border-slate-200/50">
-            <img alt="Servicio técnico especializado en celulares" src={reparacionCelular.src}
+            <img alt="Servicio técnico especializado en celulares" src={reparacionCelular.src} 
+              loading="lazy"
               class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
           </div>

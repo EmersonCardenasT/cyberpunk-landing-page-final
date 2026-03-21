@@ -1,6 +1,6 @@
 ---
-import FondoCyberpunk from "../assets/img/fondo_cyberpunk.jpeg";
-import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
+import FondoCyberpunk from "../assets/img/fondo_cyberpunk.webp";
+import logoCyberpunk from "../assets/img/logo_cyberpunk.webp";
 ---
 
 <footer
@@ -34,8 +34,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
   <div class="relative z-10">
     <div class="max-w-7xl mx-auto">
       <!-- Sección principal con grid MEJORADO -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
-        
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-16"
+      >
         <!-- Brand & Description - FULL WIDTH en mobile -->
         <div
           data-aos="fade-up"
@@ -47,13 +48,15 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
             <img
               src={logoCyberpunk.src}
               alt="Cyberpunk Store"
+              loading="lazy"
               class="h-10 sm:h-12 w-auto group-hover:scale-110 transition-transform"
             />
             <div>
               <span class="text-xl sm:text-2xl font-bold tracking-tight block"
                 >Cyberpunk</span
               >
-              <span class="text-xs text-blue-500 font-semibold">Tech Store</span>
+              <span class="text-xs text-blue-500 font-semibold">Tech Store</span
+              >
             </div>
           </div>
 
@@ -88,7 +91,7 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
             <p class="text-sm font-semibold mb-3 text-slate-300">Síguenos</p>
             <div class="flex gap-3">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all hover:scale-110"
@@ -102,7 +105,7 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               </a>
 
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/cyberpunk.pe/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 hover:border-pink-600 transition-all hover:scale-110"
@@ -130,7 +133,7 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               </a>
 
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@cyberpunk.pe"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black hover:border-white transition-all hover:scale-110"
@@ -153,8 +156,12 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos-delay="100"
           class="col-span-1 sm:col-span-1 lg:col-span-2"
         >
-          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500 text-xl">storefront</span>
+          <h6
+            class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2"
+          >
+            <span class="material-icons-round text-blue-500 text-xl"
+              >storefront</span
+            >
             Tienda
           </h6>
           <ul class="space-y-2 sm:space-y-3 text-slate-300 text-sm">
@@ -228,8 +235,11 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos-delay="200"
           class="col-span-1 sm:col-span-1 lg:col-span-2"
         >
-          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500 text-xl">build</span>
+          <h6
+            class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2"
+          >
+            <span class="material-icons-round text-blue-500 text-xl">build</span
+            >
             Servicios
           </h6>
           <ul class="space-y-2 sm:space-y-3 text-slate-300 text-sm">
@@ -291,8 +301,12 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos-delay="300"
           class="col-span-1 sm:col-span-1 lg:col-span-2"
         >
-          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
-            <span class="material-icons-round text-blue-500 text-xl">business</span>
+          <h6
+            class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2"
+          >
+            <span class="material-icons-round text-blue-500 text-xl"
+              >business</span
+            >
             Empresa
           </h6>
           <ul class="space-y-2 sm:space-y-3 text-slate-300 text-sm">
@@ -354,7 +368,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           data-aos-delay="400"
           class="col-span-1 sm:col-span-2 lg:col-span-2"
         >
-          <h6 class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+          <h6
+            class="font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2"
+          >
             <span class="material-icons-round text-blue-500 text-xl"
               >contact_support</span
             >
@@ -362,14 +378,23 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           </h6>
           <ul class="space-y-3 sm:space-y-4 text-slate-300 text-sm">
             <li class="flex items-start gap-3">
-              <span
-                class="material-icons-round text-blue-500 text-xl flex-shrink-0 mt-0.5"
-                >location_on</span
+              <a
+                class="hover:text-blue-500 transition-colors flex items-center gap-2 group"
+                href="https://maps.app.goo.gl/SZdaX8rwYwU4FG2d7"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-              <span class="break-words leading-relaxed">
-                Av. Micaela Bastidas con Jr. 9 Diciembre N° 195<br class="hidden sm:inline">
-                <span class="block sm:inline">(Misma Esquina)</span>
-              </span>
+                <span
+                  class="material-icons-round text-blue-500 text-xl flex-shrink-0 mt-0.5"
+                  >location_on</span
+                >
+                <span class="break-words leading-relaxed">
+                  Av. Micaela Bastidas con Jr. 9 Diciembre N° 195<br
+                    class="hidden sm:inline"
+                  />
+                  <span class="block sm:inline">(Misma Esquina)</span>
+                </span>
+              </a>
             </li>
             <li class="flex items-start gap-3">
               <span
@@ -392,7 +417,7 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
               <a
                 href="mailto:contacto@cyberpunk.com"
                 class="hover:text-blue-500 transition-colors break-all"
-                >cyberpunkcompany@<wbr>gmail.com</a
+                >cyberpunkcompany@<wbr />gmail.com</a
               >
             </li>
             <li class="flex items-start gap-3">
@@ -401,7 +426,7 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
                 >schedule</span
               >
               <div>
-                <p>Lun - Dom:<br class="sm:hidden"> 8:00 AM - 9:00 PM</p>
+                <p>Lun - Dom:<br class="sm:hidden" /> 8:00 AM - 9:00 PM</p>
               </div>
             </li>
           </ul>
@@ -418,7 +443,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
           <p class="text-sm font-semibold text-slate-300 mb-4">
             Métodos de Pago Aceptados
           </p>
-          <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+          <div
+            class="flex flex-wrap justify-center items-center gap-4 sm:gap-6"
+          >
             <div
               class="w-14 h-9 sm:w-16 sm:h-10 bg-white rounded-lg flex items-center justify-center"
             >
@@ -447,7 +474,9 @@ import logoCyberpunk from "../assets/img/logo_cyberpunk.png";
       <div
         class="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-xs text-slate-400"
       >
-        <div class="flex flex-col md:flex-row items-center gap-2 sm:gap-4 text-center md:text-left">
+        <div
+          class="flex flex-col md:flex-row items-center gap-2 sm:gap-4 text-center md:text-left"
+        >
           <p>© 2026 Cyberpunk Tech Store. Todos los derechos reservados.</p>
           <span class="hidden md:block">|</span>
           <p class="flex items-center gap-1 flex-wrap justify-center">

@@ -14,13 +14,13 @@ interface Props {
 const {
   title = "Cyberpunk Store Perú - Venta y Reparación de Celulares | Servicio Express",
   description = "Venta de celulares nuevos y seminuevos con garantía. Reparación express de pantallas, baterías y más. Servicio en 30 minutos. iPhone, Samsung y todas las marcas. ¡Cotiza ahora!",
-  image = "/banner_prod_completos.png", // Crea esta imagen 1200x630px
+  image = "/banner_prod_completos.webp", // Crea esta imagen 1200x630px
   canonical,  
   noindex = false,
 } = Astro.props;
 
 // URL base del sitio
-const siteURL = Astro.site || "https://cyberpunkpe.com"; // Cambia por tu dominio real
+const siteURL = Astro.site || "https://cyberpunkpe.com/"; // Cambia por tu dominio real
 const currentURL = canonical || new URL(Astro.url.pathname, siteURL).href;
 const ogImage = new URL(image, siteURL).href;
 
@@ -83,7 +83,7 @@ const jsonLd = {
     />
     <meta name="author" content="Cyberpunk Store" />
     <link rel="canonical" href={currentURL} />
-
+    <meta name="google-site-verification" content="ztbpQhuqByFbfwpa1CLizseR2RI8ApVnnp0ygcTefl8" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {
       !noindex && (
