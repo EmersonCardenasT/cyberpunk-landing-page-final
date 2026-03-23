@@ -12,10 +12,10 @@ interface Props {
 }
 
 const {
-  title = "Cyberpunk Store Perú - Venta y Reparación de Celulares | Servicio Express",
-  description = "Venta de celulares nuevos y seminuevos con garantía. Reparación express de pantallas, baterías y más. Servicio en 30 minutos. iPhone, Samsung y todas las marcas. ¡Cotiza ahora!",
+  title = "Cyberpunkpe Pichanaki | CyberpunkPE - Venta y Reparación de Celulares",
+  description = "Cyberpunkpe Pichanaki | Venta de celulares nuevos y seminuevos con garantía en Pichanaki, Junín. Reparación express de pantallas, baterías y más en 30 minutos. iPhone, Samsung y todas las marcas. ¡Cotiza ahora!",
   image = "/banner_prod_completos.webp", // Crea esta imagen 1200x630px
-  canonical,  
+  canonical,
   noindex = false,
 } = Astro.props;
 
@@ -28,20 +28,37 @@ const ogImage = new URL(image, siteURL).href;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Cyberpunk Store Perú",
+  name: "Cyberpunk Pichanaki",
   description: description,
   url: siteURL,
   telephone: "+51927854195",
   priceRange: "$$",
+  hasMap: "https://maps.google.com/?q=Cyberpunk+Pichanaki",
   image: ogImage,
+  alternateName: [
+    "CyberpunkPE",
+    "Cyberpunk Pichanaki",
+    "Cyberpunk Celulares",
+    "Cyberpunk Pichanaqui",
+  ],
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Jr. Prolongación Colonos Fundadores 198", // tu dirección real
+    addressLocality: "Pichanaki",
+    addressRegion: "Junín",
+    postalCode: "12851",
     addressCountry: "PE",
+  },
+  "@id": "https://cyberpunkpe.com/#localbusiness",
+  areaServed: {
+    "@type": "City",
+    name: "Pichanaki",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: -12.0464,
-    longitude: -77.0428,
+    // ✅ CORRECTO (Pichanaki, Junín)
+    latitude: -10.9277,
+    longitude: -74.8944,
   },
   openingHoursSpecification: [
     {
@@ -57,7 +74,11 @@ const jsonLd = {
       closes: "18:00",
     },
   ],
-  sameAs: ["https://wa.me/51927854195"],
+  sameAs: [
+    "https://wa.me/51927854195",
+    "https://web.facebook.com/CyberpunkPeru", // si tienes
+    "https://www.instagram.com/cyberpunk.pe/",
+  ],
 };
 ---
 
@@ -79,11 +100,18 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="venta celulares, reparación celulares, iPhone, Samsung, pantallas, baterías, servicio express, celulares nuevos, celulares seminuevos, garantía, financiamiento, Perú"
+      content="Cyberpunk pichanaki, Cyberpunkpe, Venta celulares pichanaki, 
+              reparación celulares pichanaki, cyberpunk venta celulares, 
+              cyberpunk store pichanaki, iPhone pichanaki, Samsung pichanaki, 
+              pantallas pichanaki, celulares junín, reparación express pichanaki,
+              Cyberpunk Pichanaqui"
     />
-    <meta name="author" content="Cyberpunk Store" />
+    <meta name="author" content="Cyberpunk Pichanaki" />
     <link rel="canonical" href={currentURL} />
-    <meta name="google-site-verification" content="ztbpQhuqByFbfwpa1CLizseR2RI8ApVnnp0ygcTefl8" />
+    <meta
+      name="google-site-verification"
+      content="ztbpQhuqByFbfwpa1CLizseR2RI8ApVnnp0ygcTefl8"
+    />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {
       !noindex && (
@@ -94,10 +122,17 @@ const jsonLd = {
       )
     }
 
+    <!-- Agregar en el <head> -->
+    <meta name="geo.region" content="PE-JUN" />
+    <meta name="geo.placename" content="Pichanaki, Junín, Perú" />
+    <meta name="geo.position" content="-10.9277;-74.8944" />
+    <meta name="ICBM" content="-10.9277, -74.8944" />
+
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
     <!-- ═══════════════════════════════════════════════════════════ -->
     <meta property="og:locale" content="es_PE" />
+    <meta property="og:locale:alternate" content="es_ES" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Cyberpunk Store" />
     <meta property="og:title" content={title} />
