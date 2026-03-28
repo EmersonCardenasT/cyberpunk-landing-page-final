@@ -57,15 +57,45 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
           <span class="block text-slate-900 dark:text-white">TU CELULAR</span>
           <span class="block min-h-[1.2em] text-blue-600">
             <div class="block min-h-[1.2em] text-blue-600">
-              <TypingAnimation client:only="react" words={typingTexts} loop />
+              <span class="gradient-text">PERFECTO</span>
             </div>
           </span>
-          <span class="block text-slate-900 dark:text-white mt-2"
+          <span class="block text-slate-900 dark:text-white"
             >EN MINUTOS</span
           >
         </h1>
       </div>
+      <style>
+        .gradient-text {
+          font-weight: bold;
 
+          background: linear-gradient(
+            270deg,
+            #3b82f6,
+            /* azul */ #8b5cf6,
+            /* morado */ #22d3ee /* celeste */
+          );
+
+          background-size: 200% 200%;
+
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          animation: gradientMove 4s ease infinite;
+        }
+
+        @keyframes gradientMove {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      </style>
       <!-- Descripción -->
       <p
         data-aos="fade-right"
@@ -170,46 +200,51 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
       </div>
 
       <!-- Botones de acción -->
-<div
-  data-aos="fade-right"
-  data-aos-delay="600"
-  data-aos-duration="1000"
-  class="flex flex-row sm:flex-wrap gap-2 sm:gap-4"
->
+      <div
+        data-aos="fade-right"
+        data-aos-delay="600"
+        data-aos-duration="1000"
+        class="flex flex-row sm:flex-wrap gap-2 sm:gap-4"
+      >
+        <!-- Botón 1 -->
+        <a
+          href="#products"
+          class="w-1/2 sm:w-auto group relative bg-blue-600 text-white px-3 py-2 sm:px-8 sm:py-4 rounded-full text-[11px] sm:text-base font-bold shadow-glow transition-all hover:scale-105 overflow-hidden text-center"
+        >
+          <span
+            class="relative z-10 flex items-center justify-center gap-1 sm:gap-2"
+          >
+            <i class="fa-solid fa-cart-shopping text-sm sm:text-xl"></i>
+            COMPRAR
+          </span>
 
-  <!-- Botón 1 -->
-  <a
-    href="#products"
-    class="w-1/2 sm:w-auto group relative bg-blue-600 text-white px-3 py-2 sm:px-8 sm:py-4 rounded-full text-[11px] sm:text-base font-bold shadow-glow transition-all hover:scale-105 overflow-hidden text-center"
-  >
-    <span class="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
-      <i class="fa-solid fa-cart-shopping text-sm sm:text-xl"></i>
-      COMPRAR
-    </span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+          </div>
+        </a>
 
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-  </a>
-
-  <!-- Botón 2 -->
-  <a
-    href="#reparacion"
-    class="w-1/2 sm:w-auto group relative px-3 py-2 sm:px-8 sm:py-4 rounded-full text-[11px] sm:text-base font-bold border-2 border-blue-600 text-blue-500 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 overflow-hidden text-center"
-  >
-    <span class="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
-      <i class="fa-solid fa-wrench text-sm sm:text-xl"></i>
-      REPARAR
-    </span>
-  </a>
-
-</div>
+        <!-- Botón 2 -->
+        <a
+          href="#reparacion"
+          class="w-1/2 sm:w-auto group relative px-3 py-2 sm:px-8 sm:py-4 rounded-full text-[11px] sm:text-base font-bold border-2 border-blue-600 text-blue-500 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 overflow-hidden text-center"
+        >
+          <span
+            class="relative z-10 flex items-center justify-center gap-1 sm:gap-2"
+          >
+            <i class="fa-solid fa-wrench text-sm sm:text-xl"></i>
+            REPARAR
+          </span>
+        </a>
+      </div>
 
       <!-- Stats -->
       <div
-  data-aos="fade-right"
-  data-aos-delay="800"
-  data-aos-duration="1000"
-  class="flex flex-wrap justify-between sm:justify-start gap-4 sm:gap-8 pt-4 sm:pt-6 border-t border-slate-200 dark:border-slate-800"
->
+        data-aos="fade-right"
+        data-aos-delay="800"
+        data-aos-duration="1000"
+        class="flex flex-wrap justify-between sm:justify-start gap-4 sm:gap-8 pt-4 sm:pt-6 border-t border-slate-200 dark:border-slate-800"
+      >
         <div class="text-center">
           <p class="text-xl sm:text-3xl font-bold text-blue-500">5000+</p>
           <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
@@ -218,11 +253,15 @@ const typingTexts = ["NUEVO", "REPARADO", "RENOVADO", "PERFECTO"];
         </div>
         <div class="text-center">
           <p class="text-3xl font-bold text-blue-500">10K+</p>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Reparaciones</p>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Reparaciones
+          </p>
         </div>
         <div class="text-center">
           <p class="text-3xl font-bold text-blue-500">4.9★</p>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Valoración</p>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Valoración
+          </p>
         </div>
       </div>
     </div>
