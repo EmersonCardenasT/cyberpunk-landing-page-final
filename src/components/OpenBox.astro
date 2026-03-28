@@ -1,0 +1,329 @@
+---
+const WA = "51927854195";
+import bannerOpen from "../assets/img/banner-openbox.webp";
+import Iphone15Pro from  "../assets/img/iphone_15_pro_max.webp";
+import Iphone14Pro from "../assets/img/iphone_14_pro.webp";
+import Iphone13Pro from "../assets/img/iphone-13-pro.jpg";
+import Iphone12Pro from "../assets/img/iphone-12-pro.jpg";
+import Iphone11Pro from "../assets/img/iphone-11-pro-max.jpg";
+
+const PRODUCTS = [
+  {
+    name: "iPhone 15 Pro",
+    tag: "OPEN BOX",
+    discount: "-7%",
+    originalPrice: "S/ 3,101",
+    price: "S/ 2899",
+    image: Iphone15Pro,
+  },
+  {
+    name: "iPhone 14 Pro",
+    tag: "OPEN BOX",
+    discount: "-7%",
+    originalPrice: "S/ 2673",
+    price: "S/ 2499",
+    image: Iphone14Pro,
+  },
+  {
+    name: "iPhone 13 Pro",
+    tag: "OPEN BOX",
+    discount: "-7%",
+    originalPrice: "S/ 2,352",
+    price: "S/ 2,199",
+    image: Iphone13Pro,
+  },
+  {
+    name: "iPhone 12 Pro",
+    tag: "OPEN BOX",
+    discount: "-7%",
+    originalPrice: "S/ 1817",
+    price: "S/ 1699",
+    image: Iphone12Pro,
+  },
+  {
+    name: "iPhone 11 Pro",
+    tag: "OPEN BOX",
+    discount: "-7%",
+    originalPrice: "S/ 1496",
+    price: "S/ 1399",
+    image: Iphone11Pro,
+  },
+];
+
+const BENEFITS = [
+  {
+    label: "Paga como prefieras",
+    desc: "Yape, Plin, tarjetas de crédito y débito, Cuotealo y más...",
+    path: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
+  },
+  {
+    label: "Productos de Calidad",
+    desc: "Productos importados y de calidad con respaldo garantizado.",
+    path: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z",
+  },
+  {
+    label: "Rápido y Seguro",
+    desc: "Compra y recíbelo en máximo 72 horas a todo el país.",
+    path: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+  {
+    label: "Atención personalizada",
+    desc: "¿Tienes dudas? ¡Escríbenos vía WhatsApp y te ayudamos!",
+    path: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z",
+  },
+];
+---
+
+<style>
+  /* ── Hero banner gradiente ── */
+  .hero-banner-bg {
+    background: linear-gradient(160deg, #0f172a 0%, #1e3a8a 50%, #1d4ed8 100%);
+    position: relative;
+  }
+
+  /* ── Tarjeta de producto ── */
+  .product-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(168, 178, 194, 0.218);
+  }
+
+  /* Overlay de hover con botón de compra */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(30, 58, 138, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 20;
+  }
+
+  .product-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  /* Badge de descuento — z-index alto para sobresalir siempre */
+  .discount-badge {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    z-index: 30;
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.45);
+    letter-spacing: 0.04em;
+  }
+
+  /* Imagen con scale suave */
+  .product-card .card-img {
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover .card-img {
+    transform: scale(1.07);
+  }
+
+  /* Botón WhatsApp dentro del overlay */
+  .btn-wa-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #25d366;
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .btn-wa-card:hover {
+    background: #1ebe5b;
+    transform: scale(1.05);
+  }
+</style>
+
+<section class="container mx-auto px-4 py-8">
+  <div class="flex flex-col lg:flex-row gap-6">
+
+    <!-- ── Hero Banner ── -->
+    <section
+      class="hero-banner-bg lg:w-1/3 rounded-2xl p-8 flex flex-col items-center justify-between text-center min-h-[600px] text-white overflow-hidden"
+    >
+      <!-- Spots decorativos -->
+      <div class="absolute top-0 left-0 w-full flex justify-between px-4 pt-4 opacity-40 pointer-events-none">
+        <div class="w-20 h-20 rounded-full bg-blue-300 blur-3xl"></div>
+        <div class="w-20 h-20 rounded-full bg-blue-300 blur-3xl"></div>
+      </div>
+
+      <!-- Título -->
+      <div class="relative z-10 space-y-2 mt-4">
+        <!-- <h1 class="text-5xl md:text-6xl font-black tracking-tighter italic
+                   drop-shadow-[0_0_20px_rgba(96,165,250,0.6)]">
+          OPEN BOX
+        </h1> -->
+        <p class="text-xs font-semibold tracking-widest uppercase text-blue-300">
+          Tu próximo equipo a precio de oportunidad
+        </p>
+        <p class="text-[10px] opacity-60 uppercase tracking-tight">
+          Equipos de exhibición impecables, rendimiento garantizado
+        </p>
+      </div>
+
+      <!-- Imagen destacada -->
+      <div class="relative z-10 my-6">
+        <img
+          src={bannerOpen.src}
+          alt="Open Box destacado"
+          class="max-h-[620px] object-contain drop-shadow-2xl mx-auto"
+          loading="lazy"
+          decoding="async"
+        />
+        <!-- <div class="mt-6">
+          <a
+            href="#products"
+            class="inline-block bg-cyan-400 hover:bg-cyan-300 text-blue-900
+                   font-bold py-3 px-10 rounded-full uppercase text-sm tracking-wider
+                   transition-all hover:scale-105 shadow-lg hover:shadow-cyan-400/40"
+          >
+            Ver Productos
+          </a>
+        </div> -->
+      </div>
+
+      <!-- Trust icons -->
+      <div class="relative z-10 flex justify-between w-full text-[10px] font-semibold
+                  pt-4 border-t border-white/10">
+        {[
+          { label: "GARANTÍA",      path: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
+          { label: "REGISTRADOS",   path: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
+          { label: "ENVÍOS RÁPIDOS",path: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8" },
+        ].map(({ label, path }) => (
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-8 h-8 flex items-center justify-center border border-white/30 rounded-full">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={path} />
+              </svg>
+            </div>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Grid de productos ── -->
+    <section id="products" class="lg:w-2/3">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b-2 border-blue-500 pb-2 mb-8">
+        <h2 class="text-2xl font-bold tracking-tight text-slate-800 dark:text-white">
+          OPEN BOX
+        </h2>
+        <!-- <a
+          href="#"
+          class="bg-blue-700 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500
+                 text-white text-xs font-bold py-2 px-4 rounded-lg flex items-center gap-1
+                 transition-colors"
+        >
+           <span class="text-base leading-none"><i class="">--</i></span>
+        </a> -->
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        {PRODUCTS.map((p) => {
+          const waMsg = encodeURIComponent(
+            `Hola! Me interesa el producto: *${p.name} | ${p.tag}*\nPrecio: ${p.price}\n¿Tienen disponibilidad?`
+          );
+          const waUrl = `https://wa.me/${WA}?text=${waMsg}`;
+
+          return (
+            <div class="product-card bg-white dark:bg-slate-800 rounded-2xl border
+                        border-slate-100 dark:border-slate-700 p-4 pt-6">
+
+              <!-- Badge sobresaliente -->
+              <span class="discount-badge">{p.discount}</span>
+
+
+              <!-- Imagen -->
+              <div class="aspect-square mb-3 overflow-hidden flex items-center justify-center
+                          bg-slate-50 dark:bg-slate-700/40 rounded-xl">
+                <img
+                  src={p.image.src}
+                  alt={p.name}
+                  class="card-img max-h-full w-full object-contain p-2"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <!-- Info -->
+              <h3 class="text-xs font-bold text-slate-800 dark:text-slate-100
+                         leading-tight mb-3 line-clamp-2">
+                {p.name} | {p.tag}
+              </h3>
+              <div class="flex flex-col mb-3">
+                <span class="text-[10px] text-slate-400 line-through">{p.originalPrice}</span>
+                <span class="text-blue-600 dark:text-blue-400 font-bold text-sm">{p.price}</span>
+              </div>
+
+              <!-- Botón visible siempre (debajo del precio) -->
+              <a
+                href={`https://wa.me/${WA}?text=${encodeURIComponent(`Hola! Me interesa el producto: *${p.name} | ${p.tag}*\nPrecio: ${p.price}\n¿Tienen disponibilidad?`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-1.5 w-full py-2 px-3
+                       bg-blue-500 hover:bg-blue-600 text-white text-[11px] font-bold
+                       rounded-lg transition-all hover:scale-105 hover:shadow-lg
+                       hover:shadow-blue-500/30"
+              >
+                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Comprar <i class=""></i>
+              </a>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+
+  <!-- ── Benefits ── -->
+  <section class="mt-12 bg-white dark:bg-slate-800 rounded-2xl shadow-sm
+                  border border-slate-100 dark:border-slate-700 p-6 md:p-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {BENEFITS.map(({ label, desc, path }) => (
+        <div class="flex items-start gap-4 group">
+          <div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl
+                      flex items-center justify-center
+                      group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40
+                      transition-colors">
+            <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={path} />
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-1">{label}</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</section>
