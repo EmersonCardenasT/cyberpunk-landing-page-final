@@ -1,52 +1,204 @@
-<!-- Métodos de pago -->
-  <section class="py-12 bg-slate-200 dark:bg-slate-800/40 border-y border-slate-300 dark:border-white/10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div
-        class="grid grid-cols-2 md:grid-cols-7 justify-items-center items-center gap-14 text-slate-600 dark:text-slate-300">
+---
+import AudioPro from "../assets/img/audifonos.webp";
+---
 
-        <!-- PAGO SEGURO -->
+<!-- Métodos de pago -->
+<section
+  class="py-12 bg-slate-200 dark:bg-slate-800/40 border-y border-slate-300 dark:border-white/10"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div
+      class="grid grid-cols-2 md:grid-cols-7 justify-items-center items-center gap-14 text-slate-600 dark:text-slate-300"
+    >
+      <!-- PAGO SEGURO -->
+      <button id="openModal">
         <div class="flex items-center gap-5 md:col-span-2">
-          <i class="fa-solid fa-shield-halved text-5xl text-slate-700 dark:text-slate-100"></i>
+          <i
+            class="fa-solid fa-shield-halved text-5xl text-slate-700 dark:text-slate-100"
+          ></i>
           <div class="leading-tight">
-            <p class="font-extrabold uppercase text-lg md:text-xl text-slate-800 dark:text-white tracking-wider">
+            <p
+              class="font-extrabold uppercase text-lg md:text-xl text-slate-800 dark:text-white tracking-wider"
+            >
               Pago Seguro
             </p>
-            <p class="text-sm md:text-base font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-300">
+            <p
+              class="text-sm md:text-base font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-300"
+            >
               Compre Fácil
             </p>
           </div>
         </div>
+      </button>
+      <!-- Entrega en Tienda -->
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-solid fa-shop text-3xl"></i>
+        <span class="text-sm font-medium">Entrega en Tienda</span>
+      </div>
 
-        <!-- Entrega en Tienda -->
-        <div class="flex flex-col items-center gap-3">
-          <i class="fa-solid fa-shop text-3xl"></i>
-          <span class="text-sm font-medium">Entrega en Tienda</span>
-        </div>
+      <!-- Visa -->
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-brands fa-cc-visa text-3xl"></i>
+        <span class="text-sm font-medium">Visa</span>
+      </div>
 
-        <!-- Visa -->
-        <div class="flex flex-col items-center gap-3">
-          <i class="fa-brands fa-cc-visa text-3xl"></i>
-          <span class="text-sm font-medium">Visa</span>
-        </div>
+      <!-- MasterCard -->
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-brands fa-cc-mastercard text-3xl"></i>
+        <span class="text-sm font-medium">MasterCard</span>
+      </div>
 
-        <!-- MasterCard -->
-        <div class="flex flex-col items-center gap-3">
-          <i class="fa-brands fa-cc-mastercard text-3xl"></i>
-          <span class="text-sm font-medium">MasterCard</span>
-        </div>
+      <!-- Transferencia -->
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-solid fa-arrow-right-arrow-left text-3xl"></i>
+        <span class="text-sm font-medium">Transferencia</span>
+      </div>
 
-        <!-- Transferencia -->
-        <div class="flex flex-col items-center gap-3">
-          <i class="fa-solid fa-arrow-right-arrow-left text-3xl"></i>
-          <span class="text-sm font-medium">Transferencia</span>
-        </div>
-
-        <!-- Depósito en agencia -->
-        <div class="flex flex-col items-center gap-3">
-          <i class="fa-solid fa-building-columns text-3xl"></i>
-          <span class="text-sm font-medium">Depósito seguro</span>
-        </div>
-
+      <!-- Depósito en agencia -->
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-solid fa-building-columns text-3xl"></i>
+        <span class="text-sm font-medium">Depósito seguro</span>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Modal -->
+  <!-- Overlay del Modal -->
+  <div
+    id="modal"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
+  >
+    <div
+      class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl w-full max-w-3xl overflow-hidden border border-gray-200 dark:border-gray-800"
+    >
+      <!-- Header estilo Apple -->
+      <div class="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+            Métodos de pago
+          </h3>
+
+          <span
+            class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-medium"
+          >
+            Pago seguro
+          </span>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-8">
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- YAPE / PLIN -->
+          <div
+            class="rounded-2xl border border-purple-100 dark:border-purple-900 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950 dark:to-gray-900 p-5"
+          >
+            <div class="mb-4">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white">
+                Yape / Plin
+              </p>
+              <p class="text-xs text-gray-500">Transferencia inmediata</p>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                  Número
+                </p>
+                <p class="text-xl font-semibold tracking-widest">
+                  +51 927 854 195
+                </p>
+              </div>
+
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                  Titular
+                </p>
+                <p class="text-sm font-medium">Tambine Navarro Cesar Augusto</p>
+              </div>
+            </div>
+
+            <!-- QR grande abajo -->
+            <div class="mt-5 flex flex-col items-center">
+              <div class="bg-white p-2 rounded-xl shadow-sm">
+                <img
+                  src={AudioPro.src}
+                  alt="QR"
+                  class="w-32 h-32 object-contain"
+                />
+              </div>
+              <p class="text-xs text-gray-500 mt-2">Escanea para pagar</p>
+            </div>
+          </div>
+
+          <!-- BCP -->
+          <div
+            class="rounded-2xl border border-blue-100 dark:border-blue-900 bg-gradient-to-b from-blue-50 to-white dark:from-blue-950 dark:to-gray-900 p-5"
+          >
+            <div class="mb-4">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white">
+                Cuentas BCP
+              </p>
+              <p class="text-xs text-gray-500">Transferencia bancaria</p>
+            </div>
+
+            <div class="space-y-3">
+              <div
+                class="bg-white dark:bg-gray-800 rounded-xl p-3 border border-gray-100 dark:border-gray-700"
+              >
+                <p class="text-xs text-gray-500 uppercase">Cuenta de ahorros</p>
+                <p class="font-semibold tracking-wider">40103722835023</p>
+              </div>
+
+              <div
+                class="bg-white dark:bg-gray-800 rounded-xl p-3 border border-gray-100 dark:border-gray-700"
+              >
+                <p class="text-xs text-gray-500 uppercase">CCI</p>
+                <p class="font-semibold tracking-wider text-sm">
+                  00240110372283502388
+                </p>
+              </div>
+
+              <div>
+                <p class="text-xs text-gray-500 uppercase">Titular</p>
+                <p class="text-sm font-medium">Tambine Navarro Cesar Augusto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+          class="mt-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 text-center"
+        >
+          <p class="text-xs text-gray-500">Envía tu comprobante al WhatsApp</p>
+          <p class="font-semibold">927 854 195</p>
+        </div>
+
+        <button
+          id="closeModal"
+          class="w-full mt-6 py-3 rounded-xl bg-black text-white hover:opacity-90 transition"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+
+    openBtn?.addEventListener("click", () => {
+      modal?.classList.remove("hidden");
+      modal?.classList.add("flex");
+    });
+
+    closeBtn?.addEventListener("click", () => {
+      modal?.classList.add("hidden");
+      modal?.classList.remove("flex");
+    });
+    
+  </script>
+</section>
