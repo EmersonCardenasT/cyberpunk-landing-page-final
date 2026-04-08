@@ -63,32 +63,45 @@ import AudioPro from "../assets/img/audifonos.webp";
   </div>
 
   <!-- Modal -->
-  <!-- Overlay del Modal -->
   <div
     id="modal"
     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
   >
     <div
-      class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl w-full max-w-3xl overflow-hidden border border-gray-200 dark:border-gray-800"
+      id="modalContent"
+      class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl w-full max-w-3xl
+           max-h-[90dvh] overflow-y-auto
+           border border-gray-200 dark:border-gray-800"
     >
       <!-- Header estilo Apple -->
-      <div class="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+      <div
+        class="px-6 py-5 border-b border-gray-100 dark:border-gray-800 sticky top-0 bg-white dark:bg-gray-900 z-10 rounded-t-3xl"
+      >
         <div class="flex items-center justify-between">
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
             Métodos de pago
           </h3>
-
-          <span
-            class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-medium"
-          >
-            Pago seguro
-          </span>
+          <div class="flex items-center gap-3">
+            <span
+              class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-medium"
+            >
+              Pago seguro
+            </span>
+            <!-- Botón cerrar visible siempre -->
+            <button
+              id="closeModalTop"
+              class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition text-lg leading-none"
+              aria-label="Cerrar"
+            >
+              ✕
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- Contenido -->
-      <div class="p-8">
-        <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-6">
+        <div class="grid md:grid-cols-2 gap-5">
           <!-- YAPE / PLIN -->
           <div
             class="rounded-2xl border border-purple-100 dark:border-purple-900 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950 dark:to-gray-900 p-5"
@@ -105,11 +118,10 @@ import AudioPro from "../assets/img/audifonos.webp";
                 <p class="text-xs text-gray-500 uppercase tracking-wide">
                   Número
                 </p>
-                <p class="text-xl font-semibold tracking-widest">
+                <p class="text-lg font-semibold tracking-widest">
                   +51 927 854 195
                 </p>
               </div>
-
               <div>
                 <p class="text-xs text-gray-500 uppercase tracking-wide">
                   Titular
@@ -118,13 +130,13 @@ import AudioPro from "../assets/img/audifonos.webp";
               </div>
             </div>
 
-            <!-- QR grande abajo -->
+            <!-- QR -->
             <div class="mt-5 flex flex-col items-center">
               <div class="bg-white p-2 rounded-xl shadow-sm">
                 <img
                   src={AudioPro.src}
                   alt="QR"
-                  class="w-32 h-32 object-contain"
+                  class="w-28 h-28 object-contain"
                 />
               </div>
               <p class="text-xs text-gray-500 mt-2">Escanea para pagar</p>
@@ -147,18 +159,18 @@ import AudioPro from "../assets/img/audifonos.webp";
                 class="bg-white dark:bg-gray-800 rounded-xl p-3 border border-gray-100 dark:border-gray-700"
               >
                 <p class="text-xs text-gray-500 uppercase">Cuenta de ahorros</p>
-                <p class="font-semibold tracking-wider">40103722835023</p>
+                <p class="font-semibold tracking-wider text-sm break-all">
+                  40103722835023
+                </p>
               </div>
-
               <div
                 class="bg-white dark:bg-gray-800 rounded-xl p-3 border border-gray-100 dark:border-gray-700"
               >
                 <p class="text-xs text-gray-500 uppercase">CCI</p>
-                <p class="font-semibold tracking-wider text-sm">
+                <p class="font-semibold tracking-wider text-sm break-all">
                   00240110372283502388
                 </p>
               </div>
-
               <div>
                 <p class="text-xs text-gray-500 uppercase">Titular</p>
                 <p class="text-sm font-medium">Tambine Navarro Cesar Augusto</p>
@@ -169,7 +181,7 @@ import AudioPro from "../assets/img/audifonos.webp";
 
         <!-- Footer -->
         <div
-          class="mt-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 text-center"
+          class="mt-5 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 text-center"
         >
           <p class="text-xs text-gray-500">Envía tu comprobante al WhatsApp</p>
           <p class="font-semibold">927 854 195</p>
@@ -177,7 +189,7 @@ import AudioPro from "../assets/img/audifonos.webp";
 
         <button
           id="closeModal"
-          class="w-full mt-6 py-3 rounded-xl bg-black text-white hover:opacity-90 transition"
+          class="w-full mt-5 py-3 rounded-xl bg-black text-white hover:opacity-90 transition"
         >
           Cerrar
         </button>
@@ -187,18 +199,37 @@ import AudioPro from "../assets/img/audifonos.webp";
 
   <script>
     const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modalContent");
     const openBtn = document.getElementById("openModal");
     const closeBtn = document.getElementById("closeModal");
+    const closeTopBtn = document.getElementById("closeModalTop");
 
-    openBtn?.addEventListener("click", () => {
+    function openModal() {
       modal?.classList.remove("hidden");
       modal?.classList.add("flex");
-    });
+      document.body.style.overflow = "hidden";
+    }
 
-    closeBtn?.addEventListener("click", () => {
+    function closeModal() {
       modal?.classList.add("hidden");
       modal?.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+
+    openBtn?.addEventListener("click", openModal);
+    closeBtn?.addEventListener("click", closeModal);
+    closeTopBtn?.addEventListener("click", closeModal);
+
+    // Cerrar al hacer click fuera del modal
+    modal?.addEventListener("click", (e) => {
+      if (!modalContent?.contains(e.target as Node)) {
+        closeModal();
+      }
     });
-    
+
+    // Cerrar con Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
   </script>
 </section>
