@@ -1,6 +1,9 @@
 ---
+import { Bot } from "lucide-react";
 import "../styles/global.css";
 import "aos/dist/aos.css";
+import Bottomstorebanner from "@/components/Bottomstorebanner.astro";
+import Floatingbutton from "@/components/Floatingbutton.astro";
 
 // Props para SEO dinámico
 interface Props {
@@ -211,6 +214,8 @@ const jsonLd = {
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- SCRIPTS -->
     <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <Floatingbutton />
 
     <!-- Inicialización de AOS -->
     <script>

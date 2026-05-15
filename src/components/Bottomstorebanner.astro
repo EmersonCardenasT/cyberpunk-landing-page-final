@@ -1,0 +1,581 @@
+---
+/**
+ * BottomStoreBanner.astro
+ * Banner flotante en la parte inferior de la página para mostrar info de la tienda.
+ * Aparece solo la primera vez y se guarda en localStorage al cerrar.
+ *
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * 🔧 DATOS EDITABLES — personaliza aquí
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ */
+
+ import CodigoQr from "../assets/img/codigoQR.jpeg";
+import Logo from "../assets/img/logo_cyberpunk_invertido.webp";
+
+const storeName = "Tienda El Sol";
+const description = "Moda, accesorios y más con los mejores precios de Lima.";
+const address = "Jr. de la Unión 456, Cercado de Lima";
+const logo = Logo;           // Ruta a tu logo
+const qrImage = CodigoQr;          // Ruta a tu QR (pago o WhatsApp)
+const linkStore = "/tienda";                      // Enlace del botón "Ver tienda"
+
+/**
+ * Métodos de pago disponibles.
+ * type: "yape" | "plin" | "cash" | "card"
+ */
+const paymentMethods = [
+  { type: "yape",  label: "Yape"     },
+  { type: "plin",  label: "Plin"     },
+  { type: "cash",  label: "Efectivo" },
+  { type: "card",  label: "Tarjeta"  },
+];
+---
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- BANNER FLOTANTE                       -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<aside
+  id="store-banner"
+  class="store-banner"
+  role="complementary"
+  aria-label="Información de la tienda"
+  aria-hidden="true"
+>
+  <!-- Botón cerrar -->
+  <button
+    id="store-banner-close"
+    class="store-banner__close"
+    aria-label="Cerrar banner de la tienda"
+    type="button"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- Contenedor principal -->
+  <div class="store-banner__inner">
+
+    <!-- ① LOGO -->
+    <div class="store-banner__logo-wrap">
+      <img
+        src={logo.src}
+        alt={`Logo de ${storeName}`}
+        class="store-banner__logo"
+        width="64"
+        height="64"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- ② INFO -->
+    <div class="store-banner__info">
+      <p class="store-banner__name">{storeName}</p>
+      <p class="store-banner__desc">{description}</p>
+
+      <!-- Dirección -->
+      <p class="store-banner__address">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        {address}
+      </p>
+
+      <!-- Métodos de pago -->
+      <div class="store-banner__payments" aria-label="Métodos de pago aceptados">
+        {paymentMethods.map((m) => (
+          <span class={`payment-badge payment-badge--${m.type}`} title={m.label} aria-label={m.label}>
+            {m.type === "yape"  && (
+              /* Ícono Yape — letra Y estilizada */
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><text y="18" font-size="18" font-weight="bold" font-family="sans-serif">Y</text></svg>
+            )}
+            {m.type === "plin"  && (
+              /* Ícono Plin — letra P estilizada */
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><text y="18" font-size="18" font-weight="bold" font-family="sans-serif">P</text></svg>
+            )}
+            {m.type === "cash"  && (
+              /* Ícono efectivo — billete */
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            )}
+            {m.type === "card"  && (
+              /* Ícono tarjeta */
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            )}
+            <span class="payment-badge__label">{m.label}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- ③ QR -->
+    <div class="store-banner__qr-wrap" aria-label="Código QR de la tienda">
+      <img
+        src={qrImage.src}
+        alt="Código QR de la tienda"
+        class="store-banner__qr"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
+      <span class="store-banner__qr-label">Escanea para pagar</span>
+    </div>
+
+    <!-- ④ CTA -->
+    <div class="store-banner__cta-wrap">
+      <a
+        href={linkStore}
+        class="store-banner__cta"
+        aria-label={`Visitar la tienda ${storeName}`}
+      >
+        Ver tienda
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</aside>
+
+
+<style>
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     VARIABLES CSS — modo claro y oscuro
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  :root {
+    --sb-bg:           #ffffff;
+    --sb-border:       rgba(0, 0, 0, 0.08);
+    --sb-shadow:       0 -4px 32px rgba(0, 0, 0, 0.10), 0 -1px 8px rgba(0,0,0,0.06);
+    --sb-text-primary: #111827;
+    --sb-text-muted:   #6b7280;
+    --sb-accent:       #f97316;        /* naranja cálido */
+    --sb-accent-hover: #ea6c0a;
+    --sb-accent-text:  #ffffff;
+    --sb-close-bg:     rgba(0,0,0,0.06);
+    --sb-close-hover:  rgba(0,0,0,0.12);
+    --sb-radius:       16px;
+    --sb-radius-sm:    8px;
+    --sb-gap:          20px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sb-bg:           #1c1c1e;
+      --sb-border:       rgba(255,255,255,0.08);
+      --sb-shadow:       0 -4px 32px rgba(0,0,0,0.5), 0 -1px 8px rgba(0,0,0,0.3);
+      --sb-text-primary: #f5f5f7;
+      --sb-text-muted:   #9ca3af;
+      --sb-accent:       #fb923c;
+      --sb-accent-hover: #f97316;
+      --sb-close-bg:     rgba(255,255,255,0.08);
+      --sb-close-hover:  rgba(255,255,255,0.14);
+    }
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     KEYFRAMES
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  @keyframes sb-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes sb-slide-down {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(110%);
+    }
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     BANNER PRINCIPAL
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    background: var(--sb-bg);
+    border-top: 1px solid var(--sb-border);
+    border-radius: var(--sb-radius) var(--sb-radius) 0 0;
+    box-shadow: var(--sb-shadow);
+
+    /* Oculto por defecto — JS lo muestra */
+    display: none;
+    opacity: 0;
+    transform: translateY(100%);
+
+    /* Accesibilidad: no bloquea clics cuando está oculto */
+    pointer-events: none;
+  }
+
+  /* Estado visible — añadido por JS */
+  .store-banner.is-visible {
+    display: block;
+    pointer-events: auto;
+    animation: sb-slide-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Estado cerrando */
+  .store-banner.is-closing {
+    animation: sb-slide-down 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     BOTÓN CERRAR
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+
+    background: var(--sb-close-bg);
+    border: none;
+    border-radius: 50%;
+    color: var(--sb-text-muted);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  }
+
+  .store-banner__close:hover {
+    background: var(--sb-close-hover);
+    color: var(--sb-text-primary);
+    transform: scale(1.1);
+  }
+
+  .store-banner__close:focus-visible {
+    outline: 2px solid var(--sb-accent);
+    outline-offset: 2px;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     LAYOUT INNER — DESKTOP (horizontal)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--sb-gap);
+    padding: 35px 52px 35px 20px;  /* right padding para el botón X */
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     LOGO
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__logo-wrap {
+    flex-shrink: 0;
+  }
+
+  .store-banner__logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: var(--sb-radius-sm);
+    background: var(--sb-close-bg);
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     INFO
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .store-banner__name {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--sb-text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .store-banner__desc {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--sb-text-muted);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .store-banner__address {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.74rem;
+    color: var(--sb-text-muted);
+    line-height: 1.3;
+  }
+
+  .store-banner__address svg {
+    flex-shrink: 0;
+    color: var(--sb-accent);
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MÉTODOS DE PAGO
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__payments {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  /* Colores por método */
+  .payment-badge--yape {
+    background: rgba(114, 47, 200, 0.12);
+    color: #722fc8;
+  }
+  .payment-badge--plin {
+    background: rgba(0, 176, 92, 0.12);
+    color: #00a055;
+  }
+  .payment-badge--cash {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+  }
+  .payment-badge--card {
+    background: rgba(59, 130, 246, 0.12);
+    color: #2563eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .payment-badge--yape { background: rgba(167, 105, 255, 0.18); color: #c084fc; }
+    .payment-badge--plin { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .payment-badge--cash { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .payment-badge--card { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
+  }
+
+  .payment-badge__label {
+    display: inline;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     QR
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__qr-wrap {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .store-banner__qr {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 2px solid var(--sb-border);
+  }
+
+  .store-banner__qr-label {
+    font-size: 0.62rem;
+    color: var(--sb-text-muted);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     BOTÓN CTA
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .store-banner__cta-wrap {
+    flex-shrink: 0;
+  }
+
+  .store-banner__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    background: var(--sb-accent);
+    color: var(--sb-accent-text);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 12px rgba(249, 115, 22, 0.35);
+    white-space: nowrap;
+  }
+
+  .store-banner__cta:hover {
+    background: var(--sb-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(249, 115, 22, 0.45);
+  }
+
+  .store-banner__cta:active {
+    transform: translateY(0);
+  }
+
+  .store-banner__cta:focus-visible {
+    outline: 2px solid var(--sb-accent);
+    outline-offset: 3px;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     RESPONSIVE — MÓVIL (vertical)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  @media (max-width: 640px) {
+    .store-banner__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 16px 20px;
+      padding-right: 40px; /* espacio para X */
+    }
+
+    /* En móvil: logo + info en fila */
+    .store-banner__logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Fila superior: logo + info */
+    .store-banner__inner {
+      display: grid;
+      grid-template-areas:
+        "logo info"
+        "pay  pay"
+        "qr   cta";
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto auto;
+      align-items: start;
+    }
+
+    .store-banner__logo-wrap { grid-area: logo; }
+    .store-banner__info      { grid-area: info; }
+    .store-banner__payments  { display: none; }  /* se mueve a su propia área */
+    .store-banner__qr-wrap   { grid-area: qr; flex-direction: row; gap: 8px; align-items: center; }
+    .store-banner__cta-wrap  { grid-area: cta; justify-self: end; align-self: center; }
+
+    .store-banner__logo {
+      width: 44px;
+      height: 44px;
+    }
+
+    .store-banner__qr {
+      width: 52px;
+      height: 52px;
+    }
+
+    .store-banner__desc {
+      white-space: normal;
+    }
+
+    .store-banner__payments {
+      grid-area: pay;
+      display: flex;
+    }
+  }
+
+  /* Tablet intermedia */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .store-banner__qr-wrap {
+      display: none; /* Ocultar QR en tablet para compactness */
+    }
+  }
+</style>
+
+
+<script>
+  /**
+   * Lógica del banner:
+   * 1. Revisa localStorage — si ya fue visto, no hace nada.
+   * 2. Espera 800ms y muestra el banner con animación.
+   * 3. Al cerrar, guarda en localStorage y anima la salida.
+   */
+  (function () {
+    const STORAGE_KEY = "storeBannerSeen";
+    const DELAY_MS    = 800;
+
+    // Si el usuario ya cerró el banner antes, salir
+    // if (localStorage.getItem(STORAGE_KEY)) return;
+
+    const banner    = document.getElementById("store-banner");
+    const closeBtn  = document.getElementById("store-banner-close");
+
+    if (!banner || !closeBtn) return;
+
+    /** Muestra el banner */
+    function showBanner() {
+      banner.style.display = "block";
+      // Forzar reflow antes de añadir la clase para que la animación funcione
+      void banner?.offsetHeight;
+      banner?.classList.add("is-visible");
+      banner?.setAttribute("aria-hidden", "false");
+    }
+
+    /** Cierra el banner con animación y guarda en localStorage */
+    function closeBanner() {
+      banner?.classList.remove("is-visible");
+      banner?.classList.add("is-closing");
+
+      // Guardar en localStorage para no volver a mostrar
+      localStorage.setItem(STORAGE_KEY, "true");
+
+      // Esperar a que termine la animación de salida
+      banner?.addEventListener("animationend", function onEnd() {
+        banner.style.display = "none";
+        banner?.setAttribute("aria-hidden", "true");
+        banner?.removeEventListener("animationend", onEnd);
+      }, { once: true });
+    }
+
+    // Mostrar con delay
+    setTimeout(showBanner, DELAY_MS);
+
+    // Evento de cierre
+    closeBtn.addEventListener("click", closeBanner);
+
+    // Cerrar también con Escape (accesibilidad)
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && banner.classList.contains("is-visible")) {
+        closeBanner();
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,659 @@
+---
+// FloatingTab.astro
+import logoDark from "../assets/img/logo_cyberpunk.webp";
+import logoYape from "../assets/img/logo_yape.jpg";
+import logoVisa from "../assets/img/logo_visa.webp";
+import logoPlin from "../assets/img/logo_plin.webp";
+---
+
+<!-- Tab Button -->
+<div
+  class="tab-btn"
+  id="contactTab"
+  role="button"
+  tabindex="0"
+  aria-label="Contáctanos"
+  aria-expanded="false"
+>
+  <span class="tab-btn__icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+      ></path>
+    </svg>
+  </span>
+  <span class="tab-btn__label">Contáctanos</span>
+</div>
+
+<!-- Overlay -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true"></div>
+
+<!-- Modal -->
+<div
+  class="modal"
+  id="contactModal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Información de contacto"
+  aria-hidden="true"
+>
+  <!-- Header -->
+  <div class="modal__header">
+    <div class="modal__logo">
+      <!-- Reemplaza este SVG con: <img src="/logo.png" alt="Logo" /> -->
+      <div class="modal__logo">
+        <img src={logoDark.src} alt="Logo CyberpunkPe" 
+          width="60"
+          height="60"
+           class="modal__logo-img" />
+
+        <div class="modal__logo-text">
+          <span class="modal__brand">CyberpunkPe</span>
+          <span class="modal__tagline">Tu tienda de confianza</span>
+        </div>
+      </div> 
+    </div>
+    <button class="modal__close" id="modalClose" aria-label="Cerrar modal">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div class="modal__body">
+    <!-- Contacto -->
+    <section class="modal__section">
+      <h3 class="modal__section-title">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          ><path
+            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+          ></path></svg
+        >
+        Contacto
+      </h3>
+      <ul class="contact-list">
+        <li class="contact-item">
+          <span class="contact-item__icon contact-item__icon--green">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"
+              ></path>
+            </svg>
+          </span>
+          <div>
+            <span class="contact-item__label">WhatsApp</span>
+            <a
+              href="https://wa.me/51927854195"
+              class="contact-item__value"
+              target="_blank">+51 927 854 195</a
+            >
+          </div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-item__icon contact-item__icon--blue">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              ><rect x="2" y="4" width="20" height="16" rx="2"></rect><path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg
+            >
+          </span>
+          <div>
+            <span class="contact-item__label">Correo</span>
+            <a
+              href="mailto:cyberpunkcompany@gmail.com"
+              class="contact-item__value">cyberpunkcompany@gmail.com</a
+            >
+          </div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-item__icon contact-item__icon--purple">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              ><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle
+                cx="12"
+                cy="12"
+                r="4"></circle><circle
+                cx="17.5"
+                cy="6.5"
+                r=".5"
+                fill="currentColor"></circle></svg
+            >
+          </span>
+          <div>
+            <span class="contact-item__label">Instagram</span>
+            <a
+              href="https://www.instagram.com/cyberpunk.pe/"
+              class="contact-item__value"
+              target="_blank">@Cyberpunkpe</a
+            >
+          </div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-item__icon contact-item__icon--red">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              ><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"
+              ></path><circle cx="12" cy="10" r="3"></circle></svg
+            >
+          </span>
+          <div>
+            <span class="contact-item__label">Dirección</span>
+            <span class="contact-item__value"
+              >Av. Micaela Bastidas 234, Pichanaki - Perú</span
+            >
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Mapa -->
+    <section class="modal__section">
+      <h3 class="modal__section-title">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          ><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"
+          ></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line
+            x1="15"
+            y1="6"
+            x2="15"
+            y2="21"></line></svg
+        >
+        Ubicación
+      </h3>
+      <div class="map-wrapper">
+        <!-- Reemplaza el src con tu URL de Google Maps embed --> 
+        <iframe
+          title="Ubicación en Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31339.728057458247!2d-74.88143360000001!3d-10.928128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910a2b1e4bcc270d%3A0xd36644c6092770f8!2sCyberpunkPE!5e0!3m2!1ses!2spe!4v1778820849769!5m2!1ses!2spe"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Métodos de pago -->
+    <section class="modal__section">
+      <h3 class="modal__section-title">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          ><rect x="1" y="4" width="22" height="16" rx="2"></rect><line
+            x1="1"
+            y1="10"
+            x2="23"
+            y2="10"></line></svg
+        >
+        Métodos de pago
+      </h3>
+
+
+      <div class="payment-grid"> 
+        <div class="payment-badge">
+          <img src={logoVisa.src} width="35" alt="Visa" class="payment-icon" />
+          <span>Visa</span>
+        </div>
+
+        <div class="payment-badge">
+          <img src={logoYape.src} width="35" alt="Yape" class="payment-icon" />
+          <span>Yape</span>
+        </div>
+
+        <div class="payment-badge">
+          <img src={logoPlin.src} width="35" alt="Plin" class="payment-icon" />
+          <span>Plin</span>
+        </div>  
+      </div>
+
+
+      
+    </section>
+  </div>
+</div>
+
+<style>
+  :root {
+    --tab-bg: #dce8f5;
+    --tab-color: #1a5fa8;
+    --tab-border: #b3cfe8;
+    --modal-radius: 18px;
+    --overlay-color: rgba(10, 20, 40, 0.5);
+  }
+
+  /* TAB */
+  .tab-btn {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 44px;
+    padding: 16px 0;
+    border-radius: 10px 0 0 10px;
+    background-color: var(--tab-bg);
+    color: var(--tab-color);
+    border: 1px solid var(--tab-border);
+    border-right: none;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition:
+      background-color 0.22s ease,
+      box-shadow 0.22s ease,
+      transform 0.22s ease;
+    animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.2s;
+  }
+  .tab-btn:hover {
+    background-color: #c4dcf2;
+    box-shadow: -4px 4px 18px rgba(26, 95, 168, 0.25);
+    transform: translateY(-50%) translateX(-4px);
+  }
+  .tab-btn:active {
+    transform: translateY(-50%) translateX(-2px);
+  }
+  .tab-btn:focus-visible {
+    outline: 2px solid var(--tab-color);
+    outline-offset: 2px;
+  }
+  .tab-btn__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tab-btn__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .tab-btn:hover .tab-btn__icon {
+    transform: scale(1.12);
+  }
+  .tab-btn__label {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateY(-50%) translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  /* OVERLAY */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-color);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 1001;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .modal-overlay.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* MODAL */
+  .modal {
+    position: fixed;
+    top: 50%;
+    right: -520px;
+    transform: translateY(-50%);
+    z-index: 1002;
+    width: min(460px, 94vw);
+    max-height: 90vh;
+    background: #fff;
+    border-radius: var(--modal-radius) 0 0 var(--modal-radius);
+    box-shadow: -8px 0 48px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: right 0.38s cubic-bezier(0.34, 1.2, 0.64, 1);
+  }
+  .modal.is-open {
+    right: 0;
+  }
+
+  /* HEADER */
+  .modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 22px;
+    background: linear-gradient(135deg, #1a5fa8 0%, #2d8bef 100%);
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .modal__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .modal__logo svg {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .modal__logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .modal__brand {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .modal__tagline {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+  .modal__close {
+    background: rgba(255, 255, 255, 0.18);
+    border: none;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .modal__close:hover {
+    background: rgba(255, 255, 255, 0.32);
+  }
+  .modal__close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* BODY */
+  .modal__body {
+    overflow-y: auto;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: #c4dcf2 transparent;
+  }
+  .modal__body::-webkit-scrollbar {
+    width: 5px;
+  }
+  .modal__body::-webkit-scrollbar-thumb {
+    background: #c4dcf2;
+    border-radius: 4px;
+  }
+
+  /* SECCIÓN */
+  .modal__section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .modal__section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1a5fa8;
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8f1fb;
+  }
+  .modal__section-title svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  /* CONTACTO */
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .contact-item__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-item__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .contact-item__icon--green {
+    background: #e6f9ee;
+    color: #25d366;
+  }
+  .contact-item__icon--blue {
+    background: #e8f1fb;
+    color: #1a5fa8;
+  }
+  .contact-item__icon--purple {
+    background: #f3ebfc;
+    color: #c13584;
+  }
+  .contact-item__icon--red {
+    background: #fdecea;
+    color: #e53935;
+  }
+  .contact-item > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .contact-item__label {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 11px;
+    color: #8a9ab0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .contact-item__value {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
+    color: #1a2540;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a.contact-item__value:hover {
+    color: #1a5fa8;
+    text-decoration: underline;
+  }
+
+  /* MAPA */
+  .map-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e0eaf5;
+    height: 195px;
+  }
+  .map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* PAGOS */
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .payment-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 6px;
+    background: #f4f8fd;
+    border-radius: 10px;
+    border: 1px solid #e0eaf5;
+    transition:
+      background 0.2s,
+      border-color 0.2s;
+  }
+  .payment-badge:hover {
+    background: #e8f1fb;
+    border-color: #b3cfe8;
+  }
+  .payment-badge svg {
+    width: 38px;
+    height: 24px;
+    border-radius: 4px;
+    display: block;
+  }
+  .payment-badge span {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4a6080;
+    text-align: center;
+  }
+
+  /* RESPONSIVE — mobile: drawer desde abajo */
+  @media (max-width: 520px) {
+    .modal {
+      width: 100vw;
+      border-radius: var(--modal-radius) var(--modal-radius) 0 0;
+      top: auto;
+      bottom: -100%;
+      right: 0;
+      transform: none;
+      max-height: 88vh;
+      transition: bottom 0.38s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    .modal.is-open {
+      bottom: 0;
+      right: 0;
+    }
+  }
+</style>
+
+<script>
+  const tab = document.getElementById("contactTab")!;
+  const modal = document.getElementById("contactModal")!;
+  const overlay = document.getElementById("modalOverlay")!;
+  const closeBtn = document.getElementById("modalClose")!;
+
+  const open = () => {
+    modal.classList.add("is-open");
+    overlay.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    tab.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  };
+
+  const close = () => {
+    modal.classList.remove("is-open");
+    overlay.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    tab.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+
+  tab.addEventListener("click", open);
+  tab.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") open();
+  });
+  closeBtn.addEventListener("click", close);
+  overlay.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+</script>
